@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Niels & Josephine · 26.06.2027 · Samsø</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&family=Alex+Brush&display=swap');
+
+:root {
+  --linen:   #EEE8DF;
+  --ww:      #F7F4EF;
+  --parch:   #E4DDD3;
+  --sage:    #7A9E7E;
+  --sage-d:  #5C7D60;
+  --tc:      #C4956A;
+  --ink:     #1C1C1A;
+  --ink2:    #2E2B28;
+  --stone:   #8C8279;
+  --serif:  'Playfair Display', Georgia, serif;
+  --sans:   'Source Sans 3', sans-serif;
+  --script: 'Alex Brush', cursive;
+  --eo: cubic-bezier(0.16,1,0.3,1);
+  --e:  cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--linen);color:var(--ink);overflow-x:hidden;cursor:none;line-height:1.72}
+
+/* grain */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+
+/* cursor */
+#cur{position:fixed;width:10px;height:10px;background:#fff;mix-blend-mode:difference;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
+#cur.hov{width:22px;height:22px}
+#cur-t{position:fixed;width:6px;height:6px;background:var(--tc);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.5}
+.sec-dots{position:fixed;right:1.4rem;top:50%;transform:translateY(-50%);z-index:900;display:flex;flex-direction:column;align-items:center;gap:.7rem;width:fit-content}
+.sec-dots button{width:5px;height:5px;border-radius:50%;border:none;background:rgba(140,130,121,.35);padding:0;cursor:pointer;transition:background .3s var(--e),transform .3s var(--e),box-shadow .3s var(--e);box-shadow:0 0 0 1px rgba(140,130,121,.2)}
+.sec-dots button.act{background:var(--sage);box-shadow:0 0 0 1.5px var(--sage);transform:scale(1.6)}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all .5s var(--e)}
+nav.scrolled{padding:.85rem 4rem;background:rgba(238,232,223,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(28,28,26,.07)}
+.nav-logo{color:var(--linen);text-decoration:none;transition:color .3s;display:flex;align-items:center;line-height:1;gap:1.4rem}
+nav.scrolled .nav-logo{color:var(--ink)}
+.nav-inv{font-family:var(--serif);font-style:italic;font-size:1.3rem;font-weight:400;color:rgba(238,232,223,.55);padding-left:1.4rem;border-left:1px solid rgba(238,232,223,.15);transition:color .3s}
+nav.scrolled .nav-inv{color:rgba(28,28,26,.45);border-left-color:rgba(28,28,26,.12)}
+.nav-links{list-style:none;display:flex;gap:2rem}
+.nav-links a{font-size:.61rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(238,232,223,.6);text-decoration:none;transition:color .2s;position:relative}
+nav.scrolled .nav-links a{color:rgba(28,28,26,.55)}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--sage);transition:width .35s var(--e)}
+.nav-links a:hover{color:var(--linen)}
+nav.scrolled .nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.ham span{display:block;width:22px;height:1px;background:var(--linen);transition:all .3s var(--e)}
+nav.scrolled .ham span{background:var(--ink)}
+.ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.mob{position:fixed;inset:0;background:var(--linen);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;opacity:0;pointer-events:none;transition:opacity .4s var(--e)}
+.mob.open{opacity:1;pointer-events:all}
+.mob-x{position:absolute;top:1.5rem;right:1.8rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink);padding:.8rem;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+.mob a{font-family:var(--serif);font-size:2rem;font-style:italic;color:var(--ink);text-decoration:none;transition:color .2s}
+.mob a:hover{color:var(--sage)}
+
+/* ── shared ── */
+.sp{padding:6.5rem 2rem}
+.inner{max-width:1160px;margin:0 auto}
+.inner-n{max-width:720px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:4.5rem}
+.eyebrow{font-size:.82rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;display:block;margin-bottom:.75rem;color:var(--stone)}
+.sec-title{font-family:var(--serif);font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:400;color:var(--ink)}
+.sec-rule{display:flex;align-items:center;gap:1rem;margin:.8rem auto 0;max-width:160px}
+.sec-rule-l{flex:1;height:1px;background:rgba(28,28,26,.42)}
+.sec-rule-d{width:6px;height:6px;border-radius:50%;background:var(--sage);flex-shrink:0}
+
+/* photo placeholders */
+.ph{width:100%;height:100%;background:linear-gradient(145deg,var(--parch),var(--linen),var(--parch));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid rgba(28,28,26,.06)}
+.ph::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(28,28,26,.08))}
+.ph span{font-family:var(--serif);font-style:italic;font-size:.78rem;color:rgba(140,130,121,.35);position:relative;z-index:1}
+.ph-dk{background:linear-gradient(145deg,#2a2724,#201e1b,#2a2724)}
+.ph-dk span{color:rgba(190,183,174,.25)}
+
+/* scroll animations */
+.img-wrap{overflow:hidden}
+.img-inner{width:100%;height:100%;clip-path:inset(0 100% 0 0);transform:scale(1.06);transition:clip-path 1.5s var(--eo),transform 1.5s var(--eo)}
+.img-wrap.vis .img-inner{clip-path:inset(0 0% 0 0);transform:scale(1)}
+
+.lm{overflow:hidden;display:block;padding-bottom:12px}
+.lm .li{display:block;transform:translateY(108%);transition:transform 1s var(--eo)}
+.lm.vis .li{transform:translateY(0)}
+.lm.vis .li:nth-child(2){transition-delay:.1s}
+.lm.vis .li:nth-child(3){transition-delay:.2s}
+
+.fu{opacity:0;transform:translateY(24px);transition:opacity 1s var(--eo),transform 1s var(--eo)}
+.fu.vis{opacity:1;transform:none}
+.fu.vis.d1{transition-delay:.1s}
+.fu.vis.d2{transition-delay:.22s}
+.fu.vis.d3{transition-delay:.34s}
+.fu.vis.d4{transition-delay:.46s}
+.fu.vis.d5{transition-delay:.58s}
+.fu.vis.d6{transition-delay:.70s}
+.fu.vis.d7{transition-delay:.82s}
+.fu.vis.d8{transition-delay:.94s}
+
+/* ── HERO ── */
+#home{position:relative;height:100vh;min-height:640px;overflow:hidden;background:var(--ink2);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10vh 2rem 6vh}
+.h-videos{position:absolute;inset:0;z-index:0}
+.h-vc{position:absolute;inset:0;transition:opacity 1.5s ease}
+.h-vc.out{opacity:0;pointer-events:none}
+.h-vc video{width:100%;height:100%;object-fit:cover;filter:saturate(.48) contrast(1.08) brightness(.7);display:block;transform:scale(1.12) translateX(0%);transition:transform .5s ease-out;will-change:transform}
+.h-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(28,28,26,.55) 0%,rgba(28,28,26,.12) 30%,rgba(28,28,26,.25) 60%,rgba(28,28,26,.85) 100%)}
+.h-inner{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;width:100%;max-width:1100px;padding:0 2rem}
+.h-ring{font-size:2.2rem;display:block;margin-bottom:1.2rem;opacity:0;animation:slideUp .9s .3s var(--eo) forwards}
+.h-date{font-family:var(--serif);font-size:2.53rem;font-weight:400;color:var(--linen);display:block;margin-bottom:2rem;opacity:0;animation:slideUp .9s .5s var(--eo) forwards}
+.h-names{display:flex;align-items:baseline;justify-content:center;gap:1.5rem;flex-wrap:nowrap;margin-bottom:.8rem;white-space:nowrap}
+.h-n1{font-family:var(--serif);font-size:clamp(2.76rem,7.48vw,8.05rem);font-weight:400;color:var(--linen);letter-spacing:.02em;line-height:1;opacity:0;animation:slideL 1.1s .7s var(--eo) forwards}
+.h-amp{font-family:var(--script);font-size:clamp(2.07rem,5.18vw,5.75rem);color:rgba(122,158,126,.9);opacity:0;animation:fadeIn .8s 1.1s forwards}
+.h-n2{font-family:var(--serif);font-size:clamp(2.76rem,7.48vw,8.05rem);font-weight:400;color:var(--linen);letter-spacing:.02em;line-height:1;opacity:0;animation:slideR 1.1s .7s var(--eo) forwards}
+.h-tag{display:flex;align-items:center;justify-content:center;gap:.8rem;margin-top:2rem;opacity:0;animation:slideUp .9s 1.4s var(--eo) forwards}
+.h-tag-l{width:90px;height:1px;background:rgba(238,232,223,.14)}
+.h-tag-t{font-size:.83rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(238,232,223,.32)}
+.cdown{display:flex;gap:2rem;justify-content:center;opacity:0;animation:slideUp .9s 1.2s var(--eo) forwards}
+.cdu{text-align:center}
+.cdn{display:block;font-family:var(--serif);font-size:4.63rem;font-weight:400;color:var(--linen);line-height:1}
+.cdl{display:block;font-size:.63rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(238,232,223,.28);margin-top:.35rem}
+.cdsep{font-family:var(--serif);font-size:2.65rem;color:rgba(238,232,223,.28);align-self:flex-start;padding-top:.25rem}
+.scrl{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:fadeIn 1s 2.4s forwards}
+.scrl span{font-size:.54rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(238,232,223,.26)}
+.scrl-l{width:1px;height:42px;background:linear-gradient(to bottom,rgba(238,232,223,.28),transparent);animation:scrlPulse 2.5s ease-in-out infinite}
+@keyframes scrlPulse{0%,100%{opacity:.35}50%{opacity:.1}}
+
+/* ── IDENTITY ── */
+#identity{background:#E8E6DD}
+.id-logo-col{display:flex;align-items:center;justify-content:center;flex-shrink:0}
+#id-anim{width:576px;height:576px;max-width:100%}
+
+/* ── STORY ── */
+#story{background:var(--parch);width:100%}
+.story-strip{display:flex;align-items:flex-start;gap:2.5vw;padding:0 4vw 4rem}
+.s-card{flex:1;min-width:0;display:flex;flex-direction:column}
+.s-card:nth-child(1){transform:translateY(-60px);--ty:-60px}
+.s-card:nth-child(2){transform:translateY(50px);--ty:50px}
+.s-card:nth-child(3){transform:translateY(-30px);--ty:-30px}
+.s-card:nth-child(4){transform:translateY(70px);--ty:70px}
+.s-card:nth-child(5){transform:translateY(-45px);--ty:-45px}
+.s-img{width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--parch);margin-bottom:1.4rem}
+.s-img .ph{width:100%;height:100%;min-height:180px;display:flex;align-items:center;justify-content:center;color:var(--stone);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase}
+.s-img img{width:100%;height:100%;object-fit:cover;display:block}
+.s-title{font-family:var(--serif);font-size:clamp(1.14rem,1.56vw,1.44rem);font-weight:400;font-style:italic;color:var(--ink);line-height:1.2;margin-bottom:.3rem}
+.s-yr{font-family:var(--script);font-size:clamp(1.44rem,1.92vw,1.92rem);color:var(--tc);display:block;margin-bottom:.8rem}
+.s-body{font-size:.94rem;line-height:1.85;color:var(--stone);font-weight:300}
+.s-body p+p{margin-top:.8em}
+.s-card{transition:transform .4s var(--e),opacity .8s var(--eo)}
+.s-card.fu{opacity:0;transform:translateY(var(--ty,0))}
+.s-card.fu.vis{opacity:1;transform:translateY(var(--ty,0));transition-delay:var(--sd,0s)}
+.story-strip:hover .s-card{opacity:.55;transform:translateY(var(--ty,0)) scale(.97)}
+.story-strip:hover .s-card:hover{opacity:1;transform:translateY(var(--ty,0)) scale(1.03)}
+.s-img img,.s-img .ph{transition:transform .5s var(--e)}
+.s-card:hover .s-img img,.s-card:hover .s-img .ph{transform:scale(1.04)}
+
+/* ── VENUE ── */
+#venue{background:#57524A}
+.vn-hero{position:relative;min-height:60vh;overflow:hidden;display:flex;align-items:flex-end;padding-top:5rem;padding-bottom:8vh}
+.vn-map-embed{max-width:1000px;width:100%;margin:2rem auto 0;padding-top:5vh}
+.vn-map-embed .map-wrap{margin-top:0}
+.vn-map-embed .park-note{color:rgba(238,232,223,.32)}
+.vn-bg{position:absolute;inset:0;z-index:0;will-change:transform}
+.vn-bg .ph-dk{height:100%;min-height:0;background:#57524A}
+.vn-grad{position:absolute;inset:0;z-index:1;background:none}
+.vn-txt{position:relative;z-index:2;text-align:center;width:100%;padding:0 2rem}
+.vn-isle{font-family:var(--serif);font-size:clamp(4.5rem,10vw,9.5rem);font-weight:400;color:var(--linen);line-height:.9;letter-spacing:-.01em}
+.vn-isle em{display:block;font-style:italic;font-size:.42em;color:rgba(238,232,223,.6);letter-spacing:.02em;margin-top:.3em}
+.vn-tag{display:block;font-size:.82rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:rgba(238,232,223,.45);margin-top:1.5rem}
+.vn-badge{display:inline-flex;align-items:center;gap:.8rem;font-size:.82rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(238,232,223,.5);border:1px solid rgba(238,232,223,.15);padding:.65rem 1.4rem;margin-top:1.2rem;text-decoration:none}
+.vn-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--sage);flex-shrink:0}
+
+/* ── PROGRAM ── */
+#program{background:var(--linen)}
+.prog-wrap{max-width:680px;margin:0 auto;position:relative}
+.prog-track{position:absolute;left:108px;top:var(--prog-offset,3.9rem);width:1px;height:0;background:rgba(28,28,26,.07)}
+.prog-line{position:absolute;left:108px;top:var(--prog-offset,3.9rem);width:1px;background:var(--sage);height:0;transform-origin:top;transition:height .05s linear}
+.dress-items{margin-top:3rem}
+.prog-item{display:grid;grid-template-columns:108px 32px 1fr;align-items:flex-start;padding:2.6rem 0;opacity:0;transform:translateX(18px);transition:opacity .7s var(--eo),transform .7s var(--eo)}
+.prog-item.vis{opacity:1;transform:none}
+.prog-time{font-family:var(--serif);font-size:1.9rem;font-weight:400;color:rgba(28,28,26,.42);line-height:1;text-align:right;padding-right:14px;padding-top:37px}
+.prog-dot{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--sage);background:var(--linen);margin:0 auto;flex-shrink:0;transition:background .4s;align-self:flex-start;position:relative;top:41px}
+.prog-item.vis .prog-dot{background:var(--sage)}
+.prog-cnt{padding-left:1.4rem;position:relative;padding-top:37px}
+.prog-icon{position:absolute;top:0;left:1.4rem;line-height:1}
+.prog-icon svg{width:29px;height:29px}
+.prog-day-break{display:flex;align-items:center;gap:1.2rem;padding:1.8rem 0;margin-left:108px}
+.prog-day-break-line{flex:1;height:1px;background:rgba(28,28,26,.1)}
+.prog-day-break-lbl{font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--stone);white-space:nowrap}
+.prog-title{font-family:var(--serif);font-size:1.2rem;font-style:italic;font-weight:400;color:var(--ink);margin-bottom:.22rem}
+.prog-desc{font-size:.94rem;color:var(--stone);font-weight:300;line-height:1.78}
+.dress-cards-row{display:flex;gap:1.6rem;justify-content:center;flex-wrap:wrap;margin-top:2.4rem;margin-bottom:2rem}
+.dress-card{background:rgba(196,149,106,.10);border:1px solid rgba(196,149,106,.25);padding:2.4rem 3rem;flex:1;min-width:260px;max-width:520px;text-align:center}
+.dress-card-label{font-family:var(--serif);font-size:1.2rem;font-style:italic;font-weight:400;color:var(--ink);display:block;margin-bottom:1.4rem}
+.dress-lines{display:flex;flex-direction:column;gap:.55rem}
+.dress-line{font-size:.94rem;color:var(--stone);font-weight:300;line-height:1.75}
+
+/* ── INDKVARTERING ── */
+#indkvartering{background:var(--parch)}
+
+/* ── ISLAND ── */
+#island{background:var(--ww)}
+/* rute-illustration */
+.ferry-route{display:flex;align-items:center;justify-content:center;gap:0;margin:0 auto 2rem;max-width:680px}
+.ferry-city{text-align:center;min-width:140px}
+.ferry-city-name{font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--ink);display:block;margin-bottom:.22rem}
+.ferry-city-sub{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--stone)}
+.ferry-city-icon{width:44px;height:44px;color:var(--sage);margin:0 auto .6rem;display:block}
+.ferry-line{flex:1;display:flex;flex-direction:column;align-items:center;gap:1.2rem;padding:0 1.6rem}
+.ferry-line-track{width:100%;height:1px;background:repeating-linear-gradient(90deg,var(--sage) 0,var(--sage) 6px,transparent 6px,transparent 14px);position:relative}
+.ferry-line-track::after{content:'';position:absolute;right:-5px;top:-4px;border-left:9px solid var(--sage);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.ferry-line-tag{font-size:.94rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+/* færge CTA */
+.ferry-cta{display:flex;align-items:center;justify-content:center;gap:2rem;margin-bottom:2.4rem}
+.ferry-cta-link{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--sage-d);text-decoration:none;border:1.5px solid var(--sage-d);padding:.7rem 1.5rem;white-space:nowrap;transition:background .2s,color .2s}
+.ferry-cta-link:hover{background:var(--sage-d);color:var(--linen)}
+.ferry-callout{display:flex;align-items:flex-start;justify-content:center;gap:.9rem;background:#FBF3E4;border-left:3px solid var(--tc);padding:.9rem 1.2rem;margin:.8rem 0 2rem;text-align:center}
+.ferry-callout-icon{font-size:1rem;flex-shrink:0;margin-top:.05rem}
+.ferry-callout-txt{font-size:.94rem;color:var(--ink);font-weight:300;line-height:1.75}
+.ferry-callout-txt strong{font-weight:600}
+/* rute-kort */
+.ferry-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.ferry-col{background:var(--ww);border:1px solid rgba(28,28,26,.09);padding:2.4rem 2.2rem}
+.ferry-col-head{display:flex;align-items:center;gap:.9rem;margin-bottom:2rem;padding-bottom:1.4rem;border-bottom:1px solid rgba(28,28,26,.07)}
+.ferry-col-icon{width:36px;height:36px;flex-shrink:0;color:var(--sage-d);opacity:.75}
+.ferry-col-title{font-family:var(--serif);font-size:1.1rem;font-style:italic;font-weight:400;color:var(--ink)}
+.ferry-steps{display:flex;flex-direction:column;gap:1.4rem}
+.fs{display:flex;gap:1.2rem;align-items:flex-start}
+.fs-n{font-family:var(--serif);font-size:1.8rem;font-weight:400;color:rgba(28,28,26,.1);line-height:1;flex-shrink:0;width:24px}
+.fs-t{font-size:.94rem;color:var(--stone);font-weight:300;line-height:1.75}
+.fs-t strong{font-weight:600;color:var(--ink)}
+.hotels{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.h-card{border:1px solid rgba(28,28,26,.09);padding:2.3rem;background:var(--ww);transition:transform .4s var(--e),box-shadow .4s var(--e);position:relative}
+.h-card:hover{transform:translateY(-5px);box-shadow:0 18px 48px rgba(28,28,26,.07)}
+.h-stars{color:var(--stone);font-size:.76rem;position:absolute;top:2.3rem;right:2.3rem;line-height:1}
+.h-name{font-family:var(--serif);font-size:1.44rem;font-weight:400;margin-bottom:.2rem;color:var(--ink)}
+.h-dist{font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-d);margin-bottom:.8rem}
+.h-desc{font-size:.94rem;color:var(--stone);line-height:1.75;font-weight:300;margin-bottom:1.3rem}
+.h-foot{display:flex;align-items:center;justify-content:space-between}
+.h-price{font-family:var(--serif);font-style:italic;font-size:.88rem;color:var(--stone)}
+.h-book-note{font-size:.94rem;color:var(--tc);font-style:italic;margin:.4rem 0 .8rem}
+.btn-sm{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.55rem 1.2rem;border:1px solid var(--ink);color:var(--ink);text-decoration:none;background:transparent;transition:all .22s;cursor:pointer;display:inline-block}
+.btn-sm:hover{background:var(--ink);color:var(--linen)}
+.map-wrap{aspect-ratio:16/10;overflow:hidden;border:1px solid rgba(28,28,26,.09);margin-top:4rem}
+.map-wrap iframe{width:100%;height:100%;border:0;filter:saturate(.35) contrast(1.1)}
+.park-note{text-align:center;font-size:.78rem;color:var(--stone);font-style:italic;font-weight:300;margin-top:1rem}
+
+/* ── THINGS ── */
+#things{background:var(--linen)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.3rem}
+.things-tabs{display:flex;justify-content:center;gap:.75rem;margin-bottom:3rem;border-bottom:1.5px solid rgba(28,28,26,.15);padding-bottom:0}
+.things-tab{font-family:var(--sans);font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);background:none;border:1.5px solid rgba(28,28,26,.15);border-bottom:none;padding:.65rem 1.6rem;cursor:pointer;transition:all .25s var(--e);margin-bottom:-1.5px}
+.things-tab:hover{border-color:var(--sage);color:var(--sage-d)}
+.things-tab.act{border-color:var(--sage-d);color:var(--sage-d);background:rgba(122,158,126,.15)}
+.things-panel{display:none}
+.things-panel.act{display:block}
+.p-card{background:var(--ww);overflow:hidden;border:1px solid rgba(28,28,26,.07);transition:transform .4s var(--e)}
+.p-card:hover{transform:translateY(-4px)}
+.p-img{aspect-ratio:4/3;overflow:hidden}
+.p-img .img-wrap,.p-img .img-inner{height:100%}
+.p-img .ph{min-height:0;height:100%}
+.p-body{padding:1.3rem}
+.p-tag{display:inline-block;font-size:.57rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-d);border:1px solid rgba(122,158,126,.3);padding:.16rem .52rem;margin-bottom:.52rem}
+.p-body h4{font-family:var(--serif);font-size:1.2rem;font-style:italic;font-weight:400;color:var(--ink);margin-bottom:.36rem}
+.p-body p{font-size:.94rem;color:var(--stone);line-height:1.7;font-weight:300}
+.p-link{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--sage-d);text-decoration:none;margin-top:.5rem;border-bottom:1px solid rgba(92,125,96,.3)}
+.p-link:hover{border-bottom-color:var(--sage-d)}
+.p-foot{padding:.5rem 1.3rem 1.3rem;font-size:.77rem;font-style:italic;color:rgba(28,28,26,.42);font-family:var(--serif)}
+
+/* ── WEATHER ── */
+#weather{background:var(--parch)}
+.wx-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:3rem}
+.wx-card{border:1px solid rgba(28,28,26,.09);padding:2.4rem 1.2rem;text-align:center;background:var(--ww);transition:transform .3s var(--e)}
+.wx-card:hover{transform:translateY(-3px)}
+.wx-card.feat{border:1.5px solid var(--sage-d);background:rgba(122,158,126,.07);position:relative}
+.wx-card.feat::before{content:'✦ Bryllupsdag';position:absolute;top:-1px;left:50%;transform:translateX(-50%);font-size:.52rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-d);white-space:nowrap;background:var(--parch);padding:0 .6rem;line-height:2}
+.wx-icon{font-size:2.2rem;display:block;margin-bottom:.8rem}
+.wx-day{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:.5rem}
+.wx-temp{font-family:var(--serif);font-size:1.62rem;margin-bottom:.3rem;color:var(--ink)}
+.wx-desc{font-size:.94rem;color:var(--stone);font-weight:300}
+.pack-tip{margin:0 auto}
+.pack-tip-items{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--ww);border:1px solid rgba(28,28,26,.09)}
+.pack-tip-item{text-align:center;padding:2.2rem 1.8rem;border-right:1px solid rgba(28,28,26,.09)}
+.pack-tip-item:last-child{border-right:none}
+.pack-tip-icon{font-size:1.8rem;display:block;margin-bottom:.7rem}
+.pack-tip-title{font-family:var(--serif);font-size:.95rem;font-style:italic;color:var(--ink);display:block;margin-bottom:.3rem}
+.pack-tip-body{font-size:.94rem;color:var(--stone);font-weight:300;line-height:1.75}
+.wx-live{display:flex;align-items:center;justify-content:center;gap:.6rem;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-d);margin-bottom:1.4rem}
+.wx-live-dot{width:12px;height:12px;border-radius:50%;background:var(--sage);flex-shrink:0;animation:wxpulse 1.4s ease-in-out infinite;box-shadow:0 0 0 0 rgba(122,158,126,.7)}
+@keyframes wxpulse{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(122,158,126,.7)}50%{transform:scale(.8);box-shadow:0 0 0 8px rgba(122,158,126,0)}100%{transform:scale(1);box-shadow:0 0 0 0 rgba(122,158,126,0)}}
+
+/* ── RSVP ── */
+#rsvp{background:var(--ww)}
+.fg{margin-bottom:2rem}
+.stepper{display:flex;align-items:center;gap:0;border-bottom:1px solid rgba(28,28,26,.14);padding:.4rem 0}
+.stepper-btn{width:44px;height:44px;border:1px solid rgba(28,28,26,.15);background:none;font-size:1.3rem;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex-shrink:0}
+.stepper-btn:hover{background:rgba(28,28,26,.05);border-color:rgba(28,28,26,.3)}
+.stepper-val{font-family:var(--sans);font-size:1.8rem;font-weight:300;color:var(--ink);min-width:3.5rem;text-align:center;line-height:1}
+.flbl{display:block;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(28,28,26,.55);margin-bottom:.5rem}
+.fin{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(28,28,26,.14);padding:.72rem 0;font-family:var(--sans);font-size:1rem;font-weight:300;color:var(--ink);outline:none;transition:border-color .25s}
+.fin:focus{border-bottom-color:var(--sage)}
+.fin::placeholder{color:rgba(28,28,26,.35)}
+.ferr{font-size:.72rem;color:#8C4A3C;font-style:italic;margin-top:.3rem;display:none}
+.has-err .ferr{display:block}
+.has-err .fin{border-bottom-color:#8C4A3C}
+.cb-lbl{font-size:.83rem;font-weight:300;color:rgba(28,28,26,.5);padding:.38rem .9rem;border:1px solid rgba(28,28,26,.12);cursor:pointer;transition:all .2s}
+.cb-lbl:hover,.cb-lbl.on{border-color:var(--sage);background:rgba(122,158,126,.07);color:var(--ink)}
+.cb-lbl input{display:none}
+.rb-grp{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.45rem}
+.rb-lbl{font-size:.83rem;font-weight:300;color:rgba(28,28,26,.5);padding:.48rem 1.2rem;border:1px solid rgba(28,28,26,.12);cursor:pointer;transition:all .2s}
+.rb-lbl:hover,.rb-lbl.on{border-color:var(--sage);background:rgba(122,158,126,.07);color:var(--ink)}
+.rb-lbl input{display:none}
+.btn-sub{width:100%;padding:1.15rem;background:none;color:var(--ink);border:1.5px solid rgba(28,28,26,.3);font-family:var(--sans);font-size:.64rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:all .25s var(--e);margin-top:.6rem}
+.btn-sub:hover{border-color:var(--sage-d);color:var(--sage-d);background:rgba(122,158,126,.08)}
+.rsvp-note{text-align:center;font-size:.94rem;color:var(--stone);font-style:italic;margin-top:1.2rem;font-weight:300}
+.rsvp-ok{display:none;text-align:center;padding:5rem 2rem}
+.rsvp-ok.show{display:block}
+.rsvp-ok .sc{font-family:var(--script);font-size:3.5rem;color:var(--sage);display:block;margin-bottom:.7rem}
+.rsvp-ok h3{font-family:var(--serif);font-size:1.8rem;font-weight:400;margin-bottom:.9rem}
+.rsvp-ok p{font-size:.94rem;color:var(--stone);font-weight:300;line-height:1.85;max-width:380px;margin:0 auto}
+
+/* ── FOOTER ── */
+footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:relative}
+.ft-init{display:block;margin-bottom:1.5rem;line-height:1}
+.ft-date{font-size:.62rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:rgba(238,232,223,.2);display:block;margin-bottom:3.5rem}
+.ft-love{font-family:var(--serif);font-style:italic;font-size:.86rem;color:rgba(238,232,223,.2)}
+.btt{position:absolute;right:3rem;bottom:3rem;width:42px;height:42px;border:1px solid rgba(238,232,223,.12);background:none;color:rgba(238,232,223,.28);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;font-size:.9rem}
+.btt:hover{border-color:var(--sage);color:var(--linen)}
+
+/* ── PRELOADER ── */
+#preloader{position:fixed;inset:0;background:var(--ink2);z-index:100000;display:flex;align-items:center;justify-content:center;transition:opacity 1s var(--e)}
+#preloader.fade{opacity:0;pointer-events:none}
+#pl-svg{width:min(52vw,52vh);height:min(52vw,52vh);color:var(--linen);opacity:0;animation:plIn 1s var(--eo) .2s forwards}
+#pl-svg circle{stroke-dasharray:754;stroke-dashoffset:754;animation:plCircle 1.6s var(--eo) .5s forwards}
+@keyframes plIn{to{opacity:1}}
+@keyframes plCircle{to{stroke-dashoffset:0}}
+
+/* keyframes */
+@keyframes slideUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes slideL{from{opacity:0;transform:translateX(-36px)}to{opacity:1;transform:none}}
+@keyframes slideR{from{opacity:0;transform:translateX(36px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* responsive */
+@media(max-width:1024px){
+  /* ── Navigation ── */
+  nav{padding:1.1rem 1.5rem}
+  nav.scrolled{padding:.75rem 1.5rem}
+  .nav-links{display:none}
+  .ham{display:flex}
+  .sec-dots{display:none}
+
+  /* ── Layout ── */
+  .sp{padding:5rem 1.4rem!important}
+  .btt{position:static;margin:3rem auto 0}
+
+  /* ── Ferry / Island ── */
+  .ferry-grid{grid-template-columns:1fr}
+  .ferry-cta{flex-direction:column;align-items:center}
+  .ferry-route{max-width:100%}
+
+  /* ── Hotels ── */
+  .hotels{grid-template-columns:1fr}
+
+  /* ── Weather ── */
+  .wx-grid{grid-template-columns:repeat(2,1fr)}
+
+  /* ── Countdown ── */
+  .cdown{gap:1rem}
+  .cdn{font-size:2.53rem}
+
+  /* ── Program timeline ── */
+  .prog-item{grid-template-columns:62px 28px 1fr}
+  .prog-time{font-size:1.4rem}
+  .prog-track{left:76px}
+  .prog-line{left:76px}
+  .prog-day-break{margin-left:76px}
+
+  /* ── Story: carousel mode ── */
+  #story{position:relative}
+  .story-sticky{position:static;overflow:hidden;touch-action:pan-y;user-select:none}
+  .story-spacer{display:none}
+  .story-strip{display:flex;flex-wrap:nowrap;overflow:visible;gap:1rem;padding:0 0 0 1.5rem;scrollbar-width:none;will-change:transform}
+  .story-strip::-webkit-scrollbar{display:none}
+  .story-strip::before,.story-strip::after{display:none}
+  .s-card{flex:0 0 88vw;max-width:420px;padding:0 0 2rem 0;transform:none!important;opacity:.45;transition:opacity .35s}
+  .s-card:nth-child(n){transform:none!important;--ty:0}
+  .s-card.carousel-active{opacity:1!important}
+  .story-strip:hover .s-card,.story-strip:hover .s-card:hover{opacity:.45;transform:none!important}
+  .story-strip:hover .s-card.carousel-active{opacity:1!important}
+  .story-dots{display:flex;justify-content:center;align-items:center;gap:.5rem;padding-top:1.6rem}
+  .story-dots button{width:28px;height:28px;border-radius:50%;border:none;background:none;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent}
+  .story-dots button::after{content:'';display:block;width:7px;height:7px;border-radius:4px;background:var(--ink);opacity:.25;transition:width .25s cubic-bezier(.4,0,.2,1),opacity .25s,background .25s}
+  .story-dots button.active::after{width:22px;opacity:1;background:var(--sage)}
+  @keyframes nudge{0%,100%{transform:translateX(0)}40%{transform:translateX(8px)}60%{transform:translateX(4px)}}
+  .story-hint{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.45;padding-top:.5rem;transition:opacity .6s}
+  .story-hint .arrow{display:inline-block;animation:nudge 1.6s ease-in-out infinite}
+  .story-hint.hidden{opacity:0;pointer-events:none}
+}
+@media(max-width:480px){
+  .wx-grid{grid-template-columns:1fr 1fr}
+  .rb-grp{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<div id="preloader">
+  <svg id="pl-svg" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="130" cy="130" r="120" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+    <circle cx="130" cy="130" r="112" fill="none" stroke="currentColor" stroke-width=".5" opacity=".28"/>
+    <defs><path id="ctp-pl" d="M130,130 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0"/></defs>
+    <text font-family="Source Sans 3, sans-serif" font-size="8.2" fill="currentColor" letter-spacing="6" font-weight="600" opacity=".38" text-anchor="middle">
+      <textPath href="#ctp-pl" startOffset="25%">26.06.2027 · SAMSØ</textPath>
+    </text>
+    <text x="72" y="138" font-family="Playfair Display, Georgia, serif" font-size="88" fill="currentColor" text-anchor="middle" dominant-baseline="middle" font-style="italic">J</text>
+    <text x="130" y="140" font-family="Alex Brush, cursive" font-size="46" fill="#C4956A" text-anchor="middle" dominant-baseline="middle">&amp;</text>
+    <text x="188" y="138" font-family="Playfair Display, Georgia, serif" font-size="88" fill="currentColor" text-anchor="middle" dominant-baseline="middle" font-style="italic">N</text>
+  </svg>
+</div>
+
+<div id="cur"></div>
+<div id="cur-t"></div>
+<div class="sec-dots" id="secDots" aria-label="Sektionsnavigation">
+  <button data-sec="home" title="Hjem"></button>
+  <button data-sec="story" title="Vores Rejse"></button>
+  <button data-sec="venue" title="Venue"></button>
+  <button data-sec="program" title="Program"></button>
+  <button data-sec="indkvartering" title="Indkvartering"></button>
+  <button data-sec="things" title="Udforsk øen"></button>
+  <button data-sec="island" title="Find vej til Samsø"></button>
+  <button data-sec="weather" title="Vejrudsigt"></button>
+  <button data-sec="rsvp" title="Tilmelding"></button>
+</div>
+
+<div class="mob" id="mob">
+  <button class="mob-x" id="mob-x">✕</button>
+  <a href="#home" onclick="closeMob()">Hjem</a>
+  <a href="#story" onclick="closeMob()">Vores Rejse</a>
+  <a href="#venue" onclick="closeMob()">Venue</a>
+  <a href="#program" onclick="closeMob()">Program</a>
+  <a href="#indkvartering" onclick="closeMob()">Indkvartering</a>
+  <a href="#things" onclick="closeMob()">Udforsk øen</a>
+  <a href="#island" onclick="closeMob()">Find vej til Samsø</a>
+  <a href="#weather" onclick="closeMob()">Vejrudsigt</a>
+  <a href="#rsvp" onclick="closeMob()">Tilmelding</a>
+</div>
+
+<nav id="nav">
+  <a href="#home" class="nav-logo">
+    <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" width="100" height="100" aria-label="J & N monogram">
+      <circle cx="130" cy="130" r="120" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+      <circle cx="130" cy="130" r="112" fill="none" stroke="currentColor" stroke-width=".5" opacity=".28"/>
+      <defs><path id="ctp-nav" d="M130,130 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0"/></defs>
+      <text font-family="Source Sans 3, sans-serif" font-size="8.2" fill="currentColor" letter-spacing="6" font-weight="600" opacity=".38" text-anchor="middle">
+        <textPath href="#ctp-nav" startOffset="25%">26.06.2027 · SAMSØ</textPath>
+      </text>
+      <text x="72" y="138" font-family="Playfair Display, Georgia, serif" font-size="88" fill="currentColor" text-anchor="middle" dominant-baseline="middle" font-style="italic">J</text>
+      <text x="130" y="140" font-family="Alex Brush, cursive" font-size="46" fill="#C4956A" text-anchor="middle" dominant-baseline="middle">&amp;</text>
+      <text x="188" y="138" font-family="Playfair Display, Georgia, serif" font-size="88" fill="currentColor" text-anchor="middle" dominant-baseline="middle" font-style="italic">N</text>
+    </svg>
+    <span class="nav-inv">Bryllupsinvitation</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Hjem</a></li>
+    <li><a href="#story">Vores Rejse</a></li>
+    <li><a href="#venue">Venue</a></li>
+    <li><a href="#program">Program</a></li>
+    <li><a href="#indkvartering">Indkvartering</a></li>
+    <li><a href="#things">Udforsk øen</a></li>
+    <li><a href="#island">Find vej til Samsø</a></li>
+    <li><a href="#weather">Vejrudsigt</a></li>
+    <li><a href="#rsvp">Tilmelding</a></li>
+  </ul>
+  <button class="ham" id="ham"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="home">
+  <div class="h-videos">
+    <div class="h-vc" id="hv1">
+      <video autoplay muted loop playsinline>
+        <source src="13711060_1920_1080_25fps.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="h-vc out" id="hv2">
+      <!-- REPLACE src with rapeseed field drone footage -->
+      <video autoplay muted loop playsinline>
+        <source src="" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div class="h-ov"></div>
+
+  <div class="h-inner">
+    <span class="h-date"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="rgba(238,232,223,.75)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:.55em;margin-bottom:.15em"><polygon points="6,12 26,12 20,26 12,26" fill="rgba(238,232,223,.08)"/><polyline points="6,12 10,6 22,6 26,12"/><line x1="10" y1="6" x2="12" y2="12"/><line x1="22" y1="6" x2="20" y2="12"/><line x1="16" y1="6" x2="16" y2="12"/><line x1="6" y1="12" x2="12" y2="26"/><line x1="26" y1="12" x2="20" y2="26"/><line x1="12" y1="12" x2="16" y2="26"/><line x1="20" y1="12" x2="16" y2="26"/><line x1="12" y1="12" x2="20" y2="12"/></svg>26 · 06 · 2027</span>
+    <div class="h-names">
+      <span class="h-n1">Josephine</span>
+      <span class="h-amp">&</span>
+      <span class="h-n2">Niels</span>
+    </div>
+    <div class="cdown">
+      <div class="cdu"><span class="cdn" id="cd-d">--</span><span class="cdl">Dage</span></div>
+      <span class="cdsep">·</span>
+      <div class="cdu"><span class="cdn" id="cd-h">--</span><span class="cdl">Timer</span></div>
+      <span class="cdsep">·</span>
+      <div class="cdu"><span class="cdn" id="cd-m">--</span><span class="cdl">Minutter</span></div>
+      <span class="cdsep">·</span>
+      <div class="cdu"><span class="cdn" id="cd-s">--</span><span class="cdl">Sekunder</span></div>
+    </div>
+    <div class="h-tag">
+      <div class="h-tag-l"></div>
+      <span class="h-tag-t">Ø-Bryllup · Teltfest</span>
+      <div class="h-tag-l"></div>
+    </div>
+  </div>
+  <div class="scrl"><span>Scroll</span><div class="scrl-l"></div></div>
+</section>
+
+<!-- ── IDENTITY ── -->
+<section id="identity">
+  <div style="padding:5rem 2rem;display:flex;justify-content:center;align-items:center">
+    <div class="id-logo-col fu">
+      <video id="id-anim" src="Niller_bryllup_animation.mp4" muted playsinline preload="auto" style="display:block;margin:0 auto"></video>
+      <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" width="220" height="220" aria-label="J & N monogram" style="display:none">
+        <circle cx="130" cy="130" r="120" fill="none" stroke="#BEB7AE" stroke-width="1"/>
+        <circle cx="130" cy="130" r="112" fill="none" stroke="#BEB7AE" stroke-width=".5" opacity=".55"/>
+        <defs>
+          <path id="ctp" d="M130,130 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0"/>
+        </defs>
+        <text font-family="Source Sans 3, sans-serif" font-size="8.2" fill="#8C8279" letter-spacing="6" font-weight="600" text-anchor="middle">
+          <textPath href="#ctp" startOffset="25%">26.06.2027 · SAMSØ</textPath>
+        </text>
+        <text x="72" y="138" font-family="Playfair Display, Georgia, serif" font-size="88" fill="#1C1C1A" text-anchor="middle" dominant-baseline="middle" font-style="italic">J</text>
+        <text x="130" y="140" font-family="Alex Brush, cursive" font-size="46" fill="#C4956A" text-anchor="middle" dominant-baseline="middle">&amp;</text>
+        <text x="188" y="138" font-family="Playfair Display, Georgia, serif" font-size="88" fill="#1C1C1A" text-anchor="middle" dominant-baseline="middle" font-style="italic">N</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ── STORY ── -->
+<section id="story">
+  <div class="story-sticky">
+  <div class="sp" style="padding-bottom:5rem">
+    <div class="sec-head fu">
+      <h2 class="sec-title">Vores Rejse</h2>
+      <div class="sec-rule"><div class="sec-rule-l"></div><div class="sec-rule-d"></div><div class="sec-rule-l"></div></div>
+    </div>
+  </div>
+
+  <div class="story-strip">
+
+    <div class="s-card fu">
+      <div class="s-img"><img src="Saadan-mødtes-vi.jpg" alt="Saadan-mødtes-vi" style="width:100%;height:100%;object-fit:cover;display:block;object-position:center 60%"></div>
+      <h3 class="s-title">Sådan mødtes vi</h3>
+      <span class="s-yr">2017</span>
+      <div class="s-body">
+        <p>Niels var 3.g'er og Josephine var 1.g putte. Vi mødtes til fester, omgik hinanden gennem fælles venner og vi havde alle muligheder for at opdage, at vi var et godt match.</p>
+        <p>Det gjorde vi ikke. Vi havde nemlig begge kærester.</p>
+        <p>Et par år senere blev det alligevel til en nat sammen. Men heller ikke dét førte til noget. Vi havde åbenbart begge brug for at færdiggøre vores feltarbejde, før vi var klar til en mere permanent løsning.</p>
+        <p>Og så gik der endnu fire år.</p>
+        <p>Vi mødtes igen til en housewarming i oktober 2017 hos Rasmus og Natasha. Og efter en flaske Ratzeputz var kemien uomtvistelig. Tak Rasmus og Natasha. Tak Ratzeputz.</p>
+      </div>
+    </div>
+
+    <div class="s-card fu">
+      <div class="s-img"><img src="Vores førstefødte.jpg" alt="Vores førstefødte"></div>
+      <h3 class="s-title">Vores "førstefødte"</h3>
+      <span class="s-yr">2020</span>
+      <div class="s-body">
+        <p>En drøm var at få en Golden Retriever. Men hvordan overbeviser man en rationel person der træffer beslutninger på baggrund af konkrete data (I ved nok hvem af os)?</p>
+        <p>Man laver selvfølgelig en business case. En 10-siders PowerPoint med billeder, facts og et udvalg af kenneler. Det skulle vise sig ikke at være sidste gang den metode virkede.</p>
+        <p>Vi fandt hurtigt Billy, vores førstefødte, firbenede familiemedlem. Man siger en hund ligner sin ejer. Bedøm selv.</p>
+      </div>
+    </div>
+
+    <div class="s-card fu">
+      <div class="s-img"><img src="Forlovelsen.jpg" alt="Forlovelsen"></div>
+      <h3 class="s-title">Forlovelsen</h3>
+      <span class="s-yr">2024</span>
+      <div class="s-body">
+        <p>I 2024 tog vi på rygsæk-eventyr, en fælles drøm vi længe havde snakket om. Destination: Cambodia og Vietnam.</p>
+        <p>En intetanende Josephine vidste dog ikke, at Niels havde slæbt en forlovelsesring med hele vejen fra Danmark. Gennem security og med stor frygt for at blive afsløret.</p>
+        <p>Efter at have samlet mod i tre dage, skete det. Som afslutning på en perfekt dag med morgendyp i poolen, 5-stjernet brunch på hotellet, scooter-tur til Angkor Wat og solnedgang på toppen af en ruin, gik Niels på knæ.</p>
+        <p>Svaneberg Marstrand. Nu skal det foreviges med alle jer.</p>
+      </div>
+    </div>
+
+    <div class="s-card fu">
+      <div class="s-img"><img src="Wilhelm.jpg" alt="Wilhelm"></div>
+      <h3 class="s-title">Wilhelm</h3>
+      <span class="s-yr">2025</span>
+      <div class="s-body">
+        <p>Vandet gik d. 18 januar 2025, og efter 30 timers intense veer kom Wilhelm endelig til verden og tog os med storm. Søndag d. 19 januar 2025, et søndagsbarn.</p>
+        <p>Sådan blev vi pludselig fire.</p>
+        <p>Siden da har han gjort sit bedste for at sikre sig, at vi aldrig keder os eller får for meget søvn.</p>
+        <p>Det er svært at sætte ord på, hvor stor vores kærlighed er til ham. Så det vil vi spare jer for.</p>
+      </div>
+    </div>
+
+    <div class="s-card fu">
+      <div class="s-img"><img src="Vielsen.jpg" alt="Vielsen"></div>
+      <h3 class="s-title">Vielsen</h3>
+      <span class="s-yr">2026</span>
+      <div class="s-body">
+        <p>Lørdag d. 20. juni 2026 blev det endelig officielt.</p>
+        <p>Utallige år, en flaske Ratzeputz, en Golden Retriever, en søn, et huskøb og utallige oplevelser senere sagde vi ja til hinanden for livet.</p>
+        <p>En dag vi aldrig glemmer.</p>
+      </div>
+    </div>
+
+  </div><!-- /story-strip -->
+
+  <!-- Mobile carousel controls (hidden on desktop via CSS) -->
+  <div class="story-dots" id="story-dots" style="display:none"></div>
+  <p class="story-hint" id="story-hint" style="display:none">Swipe for at se mere <span class="arrow">→</span></p>
+
+  </div><!-- /story-sticky -->
+  <div class="story-spacer"></div>
+
+</section>
+
+<!-- ── VENUE ── -->
+<section id="venue">
+  <div class="vn-hero">
+    <div class="vn-bg" id="vnBg"><div class="ph-dk" style="height:100%;min-height:0"></div></div>
+    <div class="vn-grad"></div>
+    <div class="vn-txt">
+      <div class="lm fu"><h2 class="vn-isle li">Samsø<em>Holmegaard, Ballen.</em></h2></div>
+      <div class="fu d2"><a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x464dab0087547aaf:0xc5af0d2ffae79c7f?sa=X&amp;ved=1t:8290&amp;ictx=111" target="_blank" rel="noopener" class="vn-badge"><div class="dot"></div> Strandvejen 62, 8305 Samsø</a></div>
+      <div class="vn-map-embed fu d3">
+        <div class="map-wrap">
+          <iframe src="https://maps.google.com/maps?q=55.8214031,10.6326528&z=14&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROGRAM ── -->
+<section id="program" class="sp">
+  <div class="inner">
+    <header class="sec-head fu">
+      <h2 class="sec-title">Programmet</h2>
+      <div class="sec-rule"><div class="sec-rule-l"></div><div class="sec-rule-d"></div><div class="sec-rule-l"></div></div>
+    </header>
+    <div class="prog-wrap" id="progWrap">
+      <div class="prog-day-break" style="padding-top:0;padding-bottom:2.4rem">
+        <div class="prog-day-break-line"></div>
+        <span class="prog-day-break-lbl">Lørdag</span>
+        <div class="prog-day-break-line"></div>
+      </div>
+      <div class="prog-track"></div>
+      <div class="prog-line" id="progLine"></div>
+      <div class="prog-item" data-prog>
+        <div class="prog-time">14:00</div><div class="prog-dot"></div>
+        <div class="prog-cnt">
+          <span class="prog-icon"><svg width="29" height="29" viewBox="0 0 29 29" fill="none" stroke="rgba(28,28,26,.42)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h19L14.5 14z" fill="rgba(28,28,26,.06)"/><line x1="5" y1="3" x2="24" y2="3"/><line x1="14.5" y1="14" x2="14.5" y2="23"/><line x1="10" y1="23" x2="19" y2="23"/><path d="M8 8h13" stroke-opacity=".4"/></svg></span>
+          <div class="prog-title">Ankomst, velkomstdrinks & fadøl</div>
+          <p class="prog-desc">Gæsterne bydes velkommen på gårdspladsen ved Holmegaard. Drik en fadøl, nyd en kanapé, mød gamle og nye venner. Tag en dyb vejrtrækning og nyd øens friske luft.</p>
+        </div>
+      </div>
+      <div class="prog-item" data-prog>
+        <div class="prog-time">15:00</div><div class="prog-dot"></div>
+        <div class="prog-cnt">
+          <span class="prog-icon"><svg width="29" height="29" viewBox="0 0 29 29" fill="none" stroke="rgba(28,28,26,.42)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="14.5" cy="21" r="6.5"/><polygon points="14.5,5 10,10.5 14.5,16 19,10.5" fill="rgba(28,28,26,.06)" stroke="rgba(28,28,26,.42)" stroke-width="1.2" stroke-linejoin="round"/><line x1="10" y1="10.5" x2="19" y2="10.5"/><line x1="14.5" y1="10.5" x2="14.5" y2="16"/><line x1="14.5" y1="16" x2="14.5" y2="14.5"/></svg></span>
+          <div class="prog-title">Genbekræftelsesceremoni</div>
+          <p class="prog-desc">Fyld noget i glasset og bevæg jer ned under den store blodbøg, hvor genbekræftelsesceremonien vil finde sted.</p>
+        </div>
+      </div>
+      <div class="prog-item" data-prog>
+        <div class="prog-time">15:30</div><div class="prog-dot"></div>
+        <div class="prog-cnt">
+          <span class="prog-icon"><svg width="29" height="29" viewBox="0 0 29 29" fill="none" stroke="rgba(28,28,26,.42)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="23" height="16" rx="1.5" fill="rgba(28,28,26,.06)"/><path d="M10 9V7l1.5-2h6L19 7v2"/><circle cx="14.5" cy="17" r="4.5"/><circle cx="14.5" cy="17" r="2" fill="rgba(28,28,26,.08)"/><circle cx="21.5" cy="12" r="1.2" fill="rgba(28,28,26,.2)" stroke="none"/></svg></span>
+          <div class="prog-title">Bryllupskage, bobler & fotografering</div>
+          <p class="prog-desc">Bryllupskage og champagne serveres udenfor på gårdspladsen. Herfra er der fri leg. Gå en tur på grunden, skål med venner, spil et havespil eller slap af på værelset inden middagen, mens vi får taget billeder.</p>
+        </div>
+      </div>
+      <div class="prog-item" data-prog>
+        <div class="prog-time">18:00</div><div class="prog-dot"></div>
+        <div class="prog-cnt">
+          <span class="prog-icon"><svg width="29" height="29" viewBox="0 0 29 29" fill="none" stroke="rgba(28,28,26,.42)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="4" x2="9" y2="25"/><line x1="7" y1="4" x2="7" y2="11"/><line x1="11" y1="4" x2="11" y2="11"/><path d="M7 11 Q9 15 11 11"/><line x1="20" y1="4" x2="20" y2="25"/><path d="M20 4 Q25 9 20 15"/><line x1="7" y1="25" x2="11" y2="25"/><line x1="17" y1="25" x2="23" y2="25"/></svg></span>
+          <div class="prog-title">Bryllupsmiddag i teltet</div>
+          <p class="prog-desc">En sæsonbetonet fire-retters menu i festteltet. Lokale råvarer. Parret med en vinmenu udvalgt af Onkel Henrik.</p>
+        </div>
+      </div>
+      <div class="prog-item" data-prog>
+        <div class="prog-time">23:55</div><div class="prog-dot"></div>
+        <div class="prog-cnt">
+          <span class="prog-icon"><svg width="29" height="29" viewBox="0 0 29 29" fill="none" stroke="rgba(28,28,26,.42)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 24C11.5 21 4 16.5 4 10.5a5.5 5.5 0 0 1 10.5-2.3A5.5 5.5 0 0 1 25 10.5c0 6-7.5 10.5-10.5 13.5z" fill="rgba(28,28,26,.06)"/></svg></span>
+          <div class="prog-title">Brudevals</div>
+          <p class="prog-desc">Det store øjeblik.</p>
+        </div>
+      </div>
+      <div class="prog-item" data-prog>
+        <div class="prog-time">00:00</div><div class="prog-dot"></div>
+        <div class="prog-cnt">
+          <span class="prog-icon"><svg width="29" height="29" viewBox="0 0 29 29" fill="none" stroke="rgba(28,28,26,.42)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="22" r="3.5"/><circle cx="20.5" cy="19" r="3.5"/><line x1="12" y1="22" x2="12" y2="7"/><line x1="24" y1="19" x2="24" y2="4"/><line x1="12" y1="7" x2="24" y2="4"/></svg></span>
+          <div class="prog-title">Fest</div>
+          <p class="prog-desc">Dansegulvet åbner og baren står klar. Træbenet svinges til det falder af.</p>
+        </div>
+      </div>
+      <div class="prog-item" data-prog>
+        <div class="prog-time">02:00</div><div class="prog-dot"></div>
+        <div class="prog-cnt">
+          <span class="prog-icon"><svg width="29" height="29" viewBox="0 0 29 29" fill="none" stroke="rgba(28,28,26,.42)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17.5a9 9 0 1 1-10.5-10.5 7 7 0 0 0 10.5 10.5z" fill="rgba(28,28,26,.06)"/></svg></span>
+          <div class="prog-title">Natmad</div>
+          <p class="prog-desc">Få noget i skrutten inden I danser videre eller inden I går til køjs.</p>
+        </div>
+      </div>
+      <div class="prog-day-break">
+        <div class="prog-day-break-line"></div>
+        <span class="prog-day-break-lbl">Søndag</span>
+        <div class="prog-day-break-line"></div>
+      </div>
+      <div class="prog-item" data-prog>
+        <div class="prog-time">10:00</div><div class="prog-dot"></div>
+        <div class="prog-cnt">
+          <span class="prog-icon"><svg width="29" height="29" viewBox="0 0 29 29" fill="none" stroke="rgba(28,28,26,.42)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11h14l-1 10a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 6 21z" fill="rgba(28,28,26,.06)"/><path d="M20 13h2.5a2.5 2.5 0 0 1 0 5H20"/><line x1="9" y1="6" x2="9" y2="10"/><line x1="13" y1="5" x2="13" y2="10"/><line x1="17" y1="6" x2="17" y2="10"/></svg></span>
+          <div class="prog-title">Morgenmad</div>
+          <p class="prog-desc">Vi sørger for morgenmad ved Købmandsgaarden i Ballen. Kom og få en BMO/kop kaffe og fortæl en røverhistorie fra aftenen før.<br><br><strong>NB:</strong> Husk at tilmelde jer morgenmad, når I bevarer tilmeldingsblanketten i bunden af hjemmesiden.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dress-cards-row">
+      <div class="dress-card fu d1">
+        <span class="dress-card-label">Dresscode</span>
+        <div class="dress-lines">
+          <span class="dress-line">Smart casual. Pænt nok til bryllup - afslappet nok til at danse.</span>
+          <span class="dress-line">Ceremonien er på græs, receptionen på sten, og festen på gulv. Pak et par skiftesko. Dine fødder vil takke dig.</span>
+        </div>
+      </div>
+      <div class="dress-card fu d1">
+        <span class="dress-card-label">Toastmasters</span>
+        <div class="dress-lines">
+          <span class="dress-line">Henvendelser angående indslag og taler bedes sendes til Jeppe Marstrand og Emma Kroeis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INDKVARTERING ── -->
+<section id="indkvartering" class="sp">
+  <div class="inner">
+    <header class="sec-head fu">
+      <h2 class="sec-title">Indkvartering</h2>
+      <div class="sec-rule"><div class="sec-rule-l"></div><div class="sec-rule-d"></div><div class="sec-rule-l"></div></div>
+    </header>
+    <div class="hotels">
+      <div class="h-card fu">
+        <div class="h-dist">Ballen</div>
+        <div class="h-stars">★★★★</div>
+        <div class="h-name">Ballen Badehotel</div>
+        <p class="h-desc">Klassisk badehotel lige ned til havnen i Ballen. Afslappet stemning. Gåafstand til venue.</p>
+        <p class="h-book-note">Henvis til "Josephine & Niels bryllup" ved booking</p>
+        <div class="h-foot"><a href="https://www.ballenbadehotel.dk/" target="_blank" rel="noopener" class="btn-sm">Book nu</a></div>
+      </div>
+      <div class="h-card fu d1">
+        <div class="h-dist">Ballen</div>
+        <div class="h-stars">★★★</div>
+        <div class="h-name">Ballen Købmandsgaard</div>
+        <p class="h-desc">Charmerende gæstgiveri i historisk købmandshus på havnen i Ballen. Gåafstand til venue.</p>
+        <p class="h-book-note">Henvis til "Josephine & Niels bryllup" ved booking</p>
+        <div class="h-foot"><a href="https://kobmandsgarden.dk/" target="_blank" rel="noopener" class="btn-sm">Book nu</a></div>
+      </div>
+      <div class="h-card fu d2">
+        <div class="h-dist">Hele øen</div>
+        <div class="h-name">Samsø Sommerhusudlejning</div>
+        <p class="h-desc">Lej et sommerhus og gør weekenden til en hel øferie for familien.</p>
+        <div class="h-foot"><a href="https://www.samsosommerhusudlejning.dk/" target="_blank" rel="noopener" class="btn-sm">Se udvalg</a></div>
+      </div>
+      <div class="h-card fu d3">
+        <div class="h-dist">Hele øen</div>
+        <div class="h-name">Airbnb</div>
+        <p class="h-desc">Fra strandhuse til gårdidyl. Find private udlejninger spredt over hele øen.</p>
+        <div class="h-foot"><a href="https://da.airbnb.com/s/Ballen--Danmark/homes?refinement_paths%5B%5D=%2Fhomes&place_id=ChIJWW_4DmCrTUYRoCZzbLYapCg&location_bb=Ql9ImkEqR1RCXz6ZQSoI%2BA%3D%3D&acp_id=34a4c497-d668-48dd-b2f2-70b0242bf27b&date_picker_type=calendar&flexible_trip_dates%5B%5D=june&flexible_trip_lengths%5B%5D=weekend_trip&flexible_date_search_filter_type=1&checkin=2027-06-24&checkout=2027-06-27&search_type=autocomplete_click" target="_blank" rel="noopener" class="btn-sm">Se udvalg</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THINGS TO DO ── -->
+<section id="things" class="sp">
+  <div class="inner">
+    <header class="sec-head fu">
+            <h2 class="sec-title">Udforsk øen</h2>
+      <div class="sec-rule"><div class="sec-rule-l"></div><div class="sec-rule-d"></div><div class="sec-rule-l"></div></div>
+    </header>
+    <div class="things-tabs">
+      <button class="things-tab act" data-tab="aktiviteter">Aktiviteter</button>
+      <button class="things-tab" data-tab="spisesteder">Spisesteder</button>
+    </div>
+
+    <div class="things-panel act" id="tab-aktiviteter">
+      <div class="cards">
+        <div class="p-card fu"><div class="p-img"><img src="Aktiviteter/Ballen Strand.jpg" alt="Ballen Strand" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Strand</span><h4>Ballen Strand</h4><p>Stå op med solen, tag et morgendyp, nyd den fine sandstrand og spis en is i det lokale ishus.</p></div></div>
+        <div class="p-card fu d1"><div class="p-img"><img src="Aktiviteter/Ballen Havn.jpg" alt="Ballen Havn" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Havn</span><h4>Ballen Havn</h4><p>Kig på bådene, køb frisk fisk og tag en kold øl ved kanten. Ballen Havn tiltrækker folk og den gode stemning.</p></div></div>
+        <div class="p-card fu d2"><div class="p-img"><img src="Aktiviteter/Nordbybakker.jpeg" alt="Ballebjerg & Nordbybakker" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Natur</span><h4>Ballebjerg & Nordbybakker</h4><p>Øens højeste punkt med udsigt over marker, kyst og hav i alle retninger. Kom op og nyd en solnedgang du ikke glemmer.</p></div></div>
+        <div class="p-card fu d3"><div class="p-img"><img src="Aktiviteter/Brundby rockhotel.jpeg" alt="Brundby Rockhotel" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Brundby</span><h4>Brundby Rockhotel</h4><p>En kulturinstitution på Samsø, hvor alle de store danske musikere har været forbi og spille. Oplev de tapetserede vægge fyldt med minder, billeder og signaturer fra årtiers besøg.</p></div></div>
+        <div class="p-card fu"><div class="p-img"><img src="Aktiviteter/Tranebjerg.jpg" alt="Tranebjerg" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Storby</span><h4>Tranebjerg</h4><p>Øens 'storby' med egen gågade fuld af lokale butikker og caféer. Nyd en kop kaffe eller en fadøl, og stik ind hos Agerup Grafik og få custom broderet en t-shirt eller kasket.</p></div></div>
+        <div class="p-card fu d2"><div class="p-img"><img src="Aktiviteter/Permelille.jpg" alt="Permelille" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Landsby</span><h4>Permelille</h4><p>En stille landsby med en stor gårdbutik. ØbyU samler fællesskab, café og gårdbutik på ét sted.</p></div></div>
+        <div class="p-card fu d3"><div class="p-img"><img src="Aktiviteter/Sælvig Bugten.jpeg" alt="Sælvig Bugten" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Bugt</span><h4>Sælvig Bugten</h4><p>Lang lav-vandet kyststrækning på vestsiden af øen. Perfekt til en rolig aftentur, en solnedgang over havet eller et stille øjeblik for jer selv.</p></div></div>
+        <div class="p-card fu"><div class="p-img"><img src="Aktiviteter/Gadekjæret Nordby.jpg" alt="Gadekjæret Nordby" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Landsby</span><h4>Nordby</h4><p>Særligt kendt for det unikke gadekær og de gode spisesteder. Gå en tur og stik ind hos Casatua, hvis i vil smage øens bedste is.</p></div></div>
+      </div>
+    </div>
+
+    <div class="things-panel" id="tab-spisesteder">
+      <div class="cards">
+        <div class="p-card fu"><div class="p-img"><img src="Spisesteder/Behrnt.jpg" alt="Restaurant Behrnt" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Ballen</span><h4>Restaurant Behrnt</h4><p>Ballen Badehotels eksklusive restaurant i klassisk badehotels-stil. Menuen er sammensat med Samsø som omdrejningspunkt, naturligvis med lokale råvarer i højsædet.</p></div></div>
+        <div class="p-card fu d1"><div class="p-img"><img src="Spisesteder/Skipperly.jpg" alt="Skipperly" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Ballen</span><h4>Skipperly</h4><p>Restaurant helt nede på Ballen Havn med udsigt over havnen, bådene og vandet. Perfekt til en kartoffelmad serveret på terrassen.</p></div></div>
+        <div class="p-card fu d2"><div class="p-img"><img src="Spisesteder/Røgeriet.jpg" alt="Røgeriet" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Ballen</span><h4>Røgeriet</h4><p>Friskrøget fisk og skaldyr direkte fra havnen. Enkelt, lokalt og en af øens bedste adresser til en hurtig og god frokost.</p></div></div>
+        <div class="p-card fu d3"><div class="p-img"><img src="Spisesteder/Den gamle butik.jpeg" alt="Mad & Vinbar, Den Gamle Butik" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Ballen</span><h4>Mad & Vinbar, Den Gamle Butik</h4><p>I den gamle købmandsbutik i Købmandsgården finder du sæsonretter og en vinliste med omhu. Hyggelig stemning og uformel mad.</p></div></div>
+        <div class="p-card fu"><div class="p-img"><img src="Spisesteder/Dokken.jpg" alt="Restaurant Dokken" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Ballen</span><h4>Restaurant Dokken</h4><p>50 år gammel havnerestaurant i de gamle skibsværftslokaler ned til vandet. Afslappet stemning og kendt for klassiske danske retter.</p></div></div>
+        <div class="p-card fu d1"><div class="p-img"><img src="Spisesteder/Lille sommerhotel.jpg" alt="Det lille Sommerhotel" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Ballen</span><h4>Det lille Sommerhotel</h4><p>Enkel, velsmagende mad i ydmyge omgivelser. Og tidligere vinder af årets kartoffelmad. Oplagt til en rolig frokost eller en middag uden de store armbevægelser.</p></div></div>
+        <div class="p-card fu d2"><div class="p-img"><img src="Spisesteder/Traktor pub.jpeg" alt="Traktor GastroPub" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Mårup</span><h4>Traktor GastroPub</h4><p>Nyåbnet gastropub i en gammel landejendom med plads til store armbevægelser og leg til børnene. Kæmpe anbefaling til en sommeraften.</p></div></div>
+
+        <div class="p-card fu"><div class="p-img"><img src="Spisesteder/Søster Sidevind.jpeg" alt="Søster Sidevind" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Besser</span><h4>Søster Sidevind</h4><p>En gammel købmandsbutik i Besser med frisksmurt smørrebrød, kaffe og kage i hyggelig gårdhave. Finurlig og værd at gå på opdagelse i.</p></div></div>
+        <div class="p-card fu d1"><div class="p-img"><img src="Spisesteder/Madsnekeriet.jpeg" alt="Samsø Madsnedkeri" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Tranebjerg</span><h4>Samsø Madsnedkeri</h4><p>Tidligere stald nu omdannet til spisested med øens bedste burger og fritter. Dertilhørende gårdbutik med hjemmelavede produkter.</p></div></div>
+        <div class="p-card fu d2"><div class="p-img"><img src="Spisesteder/Gule parasol.jpeg" alt="Den Gule Parasol" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Tranebjerg</span><h4>Den Gule Parasol</h4><p>Lowkey kombineret brugskunstbutik og café med occasional live musik. Få en sandwich eller et stykke kage.</p></div></div>
+        <div class="p-card fu d3"><div class="p-img"><img src="Spisesteder/Smagen af øen.jpg" alt="Smagen af øen" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Nordby</span><h4>Smagen af øen</h4><p>Butik og café i Nordby med lokale råvarer og øens egne produkter. Et autentisk stop for dem, der vil tage noget af Samsø med hjem.</p></div></div>
+        <div class="p-card fu"><div class="p-img"><img src="Spisesteder/Samsø bryghus.jpg" alt="Samsø Bryghus" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)"></div><div class="p-body"><span class="p-tag">Nordby</span><h4>Samsø Bryghus</h4><p>Café og butik med mad lavet af gårdens egne råvarer og øl brygget på Samsø.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FIND VEJ ── -->
+<section id="island" class="sp">
+  <div class="inner">
+    <header class="sec-head fu">
+      <h2 class="sec-title">Find vej til Samsø</h2>
+      <div class="sec-rule"><div class="sec-rule-l"></div><div class="sec-rule-d"></div><div class="sec-rule-l"></div></div>
+    </header>
+    <div class="ferry-route fu">
+      <div class="ferry-city">
+        <svg class="ferry-city-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H5a2 2 0 0 0-2 2"/><path d="M15 17h4a2 2 0 0 1 2 2"/><rect x="2" y="7" width="20" height="8" rx="2"/><path d="M12 7V3"/><path d="M7 15v2"/><path d="M17 15v2"/></svg>
+        <span class="ferry-city-name">Kalundborg</span>
+        <span class="ferry-city-sub">Fastlandet</span>
+      </div>
+      <div class="ferry-line">
+        <div class="ferry-line-track"></div>
+        <span class="ferry-line-tag">80 min · færge</span>
+      </div>
+      <div class="ferry-city">
+        <svg class="ferry-city-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 4 6 4 10c0 6 8 12 8 12s8-6 8-12c0-4-3.6-8-8-8z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <span class="ferry-city-name">Ballen</span>
+        <span class="ferry-city-sub">Samsø</span>
+      </div>
+    </div>
+
+    <div class="ferry-callout fu d1">
+      <span class="ferry-callout-icon">⚠️</span>
+      <div class="ferry-callout-txt"><strong>Book i god tid</strong> — kan blive udsolgt i højsæsonen.</div>
+    </div>
+
+    <div class="ferry-cta fu d2">
+      <a href="https://www.samsoelinjen.dk/" target="_blank" rel="noopener" class="ferry-cta-link">Køb færgebilletter</a>
+    </div>
+
+    <div class="ferry-grid fu d2">
+      <div class="ferry-col">
+        <div class="ferry-col-head">
+          <svg class="ferry-col-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H5a2 2 0 0 0-2 2"/><path d="M15 17h4a2 2 0 0 1 2 2"/><rect x="2" y="7" width="20" height="8" rx="2"/><path d="M12 7V3"/><path d="M7 15v2"/><path d="M17 15v2"/></svg>
+          <span class="ferry-col-title">Med tog</span>
+        </div>
+        <div class="ferry-steps">
+          <div class="fs"><div class="fs-n">1</div><div class="fs-t"><strong>København til Kalundborg:</strong> Tag toget fra København H. Gå 150 meter fra Kalundborg Station til færgeterminalen.</div></div>
+          <div class="fs"><div class="fs-n">2</div><div class="fs-t"><strong>Fra Ballen færgeterminal:</strong> Ballen ligger ca. 1,2 km fra terminalen. Gå, eller allier dig med en af gæsterne i bil.</div></div>
+        </div>
+      </div>
+
+      <div class="ferry-col">
+        <div class="ferry-col-head">
+          <svg class="ferry-col-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17H5v-5l3-6h8l3 6v5z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/><path d="M5 12h14"/></svg>
+          <span class="ferry-col-title">Med bil</span>
+        </div>
+        <div class="ferry-steps">
+          <div class="fs"><div class="fs-n">1</div><div class="fs-t"><strong>Kør til Kalundborg:</strong> Følg skiltene til Kalundborg Færgeterminal.</div></div>
+          <div class="fs"><div class="fs-n">2</div><div class="fs-t"><strong>Fra Ballen færgeterminal:</strong> Ballen ligger 5 minutters kørsel fra terminalen. Parkering er tilgængeligt ved hotellerne.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WEATHER ── -->
+<section id="weather" class="sp">
+  <div class="inner">
+    <header class="sec-head fu">
+      <h2 class="sec-title">Klædt på til vejret</h2>
+      <div class="sec-rule"><div class="sec-rule-l"></div><div class="sec-rule-d"></div><div class="sec-rule-l"></div></div>
+    </header>
+    <span class="wx-live fu"><span class="wx-live-dot"></span>Opdateres løbende</span>
+    <div class="wx-grid">
+      <div class="wx-card fu"><span class="wx-icon">🌤</span><div class="wx-day">Man 23 Jun</div><div class="wx-temp">13–20°C</div><div class="wx-desc">Mest sol</div></div>
+      <div class="wx-card fu d1"><span class="wx-icon">🌤</span><div class="wx-day">Tir 24 Jun</div><div class="wx-temp">13–20°C</div><div class="wx-desc">Mest sol</div></div>
+      <div class="wx-card fu d2"><span class="wx-icon">☀️</span><div class="wx-day">Ons 25 Jun</div><div class="wx-temp">13–21°C</div><div class="wx-desc">Sol</div></div>
+      <div class="wx-card feat fu d3"><span class="wx-icon">☀️</span><div class="wx-day">Lør 26 Jun</div><div class="wx-temp">14–21°C</div><div class="wx-desc">Sol</div></div>
+      <div class="wx-card fu d4"><span class="wx-icon">⛅</span><div class="wx-day">Fre 27 Jun</div><div class="wx-temp">13–20°C</div><div class="wx-desc">Let skyet</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RSVP ── -->
+<section id="rsvp" class="sp">
+  <div class="inner-n">
+    <header class="sec-head fu">
+      <span class="eyebrow">Tilmeld jer</span>
+      <h2 class="sec-title">RSVP</h2>
+      <div class="sec-rule"><div class="sec-rule-l"></div><div class="sec-rule-d"></div><div class="sec-rule-l"></div></div>
+    </header>
+    <div class="fu d1">
+      <form id="rsvpForm" novalidate>
+        <div class="fg" id="fg-guests">
+          <label class="flbl" for="r-guests">Antal gæster</label>
+          <div class="stepper">
+            <button type="button" class="stepper-btn" id="guests-dec" aria-label="Færre gæster">−</button>
+            <span class="stepper-val" id="guests-display">1</span>
+            <button type="button" class="stepper-btn" id="guests-inc" aria-label="Flere gæster">+</button>
+          </div>
+          <input type="hidden" id="r-guests" name="antal_gaester" value="1">
+          <span class="ferr">Skriv antal gæster.</span>
+        </div>
+        <div class="fg" id="fg-name">
+          <label class="flbl" for="r-name">Navn</label>
+          <input class="fin" type="text" id="r-name" name="navn" placeholder="Dit navn" autocomplete="name">
+          <span class="ferr">Skriv dit navn.</span>
+        </div>
+        <div id="extra-guests-container"></div>
+        <div class="fg" id="fg-email">
+          <label class="flbl" for="r-email">E-mailadresse (til løbende opdateringer)</label>
+          <input class="fin" type="email" id="r-email" name="email" placeholder="din@email.dk" autocomplete="email">
+          <span class="ferr">Skriv en gyldig e-mailadresse.</span>
+        </div>
+        <div class="fg">
+          <label class="flbl" for="r-song">Musikønske</label>
+          <input class="fin" type="text" id="r-song" name="musikonske" placeholder="Hvilken sang får dig op at danse?">
+        </div>
+        <div class="fg" id="fg-att">
+          <label class="flbl">Deltager du?</label>
+          <div class="rb-grp">
+            <label class="rb-lbl"><input type="radio" name="deltager" value="Ja, jeg kommer!"> Ja, jeg kommer!</label>
+            <label class="rb-lbl"><input type="radio" name="deltager" value="Desværre ikke"> Desværre ikke</label>
+          </div>
+          <span class="ferr">Fortæl os om du deltager.</span>
+        </div>
+        <button type="submit" class="btn-sub">Send min tilmelding</button>
+        <p class="rsvp-note">Tilmeld dig inden <strong>1. marts 2027</strong></p>
+      </form>
+      <div class="rsvp-ok" id="rsvpOk">
+        <span class="sc">Tak</span>
+        <h3 id="confName">Vi glæder os til at se jer!</h3>
+        <p>Din tilmelding er modtaget. Vi giver lyd af os, når dagen nærmer sig. Med kærlighed, Niels &amp; Josephine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="ft-init">
+    <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" width="150" height="150" aria-label="J & N monogram">
+      <circle cx="130" cy="130" r="120" fill="none" stroke="rgba(238,232,223,.18)" stroke-width="1"/>
+      <circle cx="130" cy="130" r="112" fill="none" stroke="rgba(238,232,223,.1)" stroke-width=".5"/>
+      <text x="72" y="138" font-family="Playfair Display, Georgia, serif" font-size="88" fill="rgba(238,232,223,.22)" text-anchor="middle" dominant-baseline="middle" font-style="italic">J</text>
+      <text x="130" y="140" font-family="Alex Brush, cursive" font-size="46" fill="rgba(196,149,106,.45)" text-anchor="middle" dominant-baseline="middle">&amp;</text>
+      <text x="188" y="138" font-family="Playfair Display, Georgia, serif" font-size="88" fill="rgba(238,232,223,.22)" text-anchor="middle" dominant-baseline="middle" font-style="italic">N</text>
+    </svg>
+  </span>
+  <button class="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+</footer>
+
+<script>
+// ── CURSOR ──
+const cur = document.getElementById('cur');
+let mx=0,my=0;
+document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
+
+// ── CURSOR TRAIL ──
+const ct=document.getElementById('cur-t');
+let tx=0,ty=0;
+(function lag(){ tx+=(mx-tx)*.1; ty+=(my-ty)*.1; ct.style.left=tx+'px'; ct.style.top=ty+'px'; requestAnimationFrame(lag); })();
+
+// ── SECTION DOTS ──
+const secIds=['home','story','venue','program','indkvartering','things','island','weather','rsvp'];
+const dotBtns=Array.from(document.querySelectorAll('.sec-dots button'));
+dotBtns.forEach((btn,i)=>btn.addEventListener('click',()=>document.getElementById(secIds[i])?.scrollIntoView({behavior:'smooth'})));
+const dotObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const i=secIds.indexOf(e.target.id);
+      if(i>=0){ dotBtns.forEach(b=>b.classList.remove('act')); dotBtns[i]?.classList.add('act'); }
+    }
+  });
+},{rootMargin:'-40% 0px -40% 0px',threshold:0});
+secIds.forEach(id=>{ const el=document.getElementById(id); if(el) dotObs.observe(el); });
+document.querySelectorAll('a,button,input,textarea,.cb-lbl,.rb-lbl,.tab-btn,.p-card,.h-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('hov'));
+});
+
+
+// ── IDENTITY ANIMATION LOOP ──
+(function(){
+  const v = document.getElementById('id-anim');
+  if(!v) return;
+  v.play();
+  v.addEventListener('ended', () => setTimeout(() => { v.currentTime=0; v.play(); }, 500));
+})();
+
+// ── NAV ──
+const nav=document.getElementById('nav');
+const ham=document.getElementById('ham');
+const mob=document.getElementById('mob');
+document.getElementById('mob-x').addEventListener('click',closeMob);
+ham.addEventListener('click',()=>{ ham.classList.toggle('open'); mob.classList.toggle('open'); });
+function closeMob(){ ham.classList.remove('open'); mob.classList.remove('open'); }
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
+
+// ── COUNTDOWN ──
+const wed=new Date('2027-06-26T14:00:00');
+function tick(){
+  const diff=wed-Date.now(), pad=n=>String(Math.max(0,n)).padStart(2,'0');
+  if(diff<=0){ ['cd-d','cd-h','cd-m','cd-s'].forEach(id=>document.getElementById(id).textContent='00'); return; }
+  document.getElementById('cd-d').textContent=pad(Math.floor(diff/86400000));
+  document.getElementById('cd-h').textContent=pad(Math.floor(diff%86400000/3600000));
+  document.getElementById('cd-m').textContent=pad(Math.floor(diff%3600000/60000));
+  document.getElementById('cd-s').textContent=pad(Math.floor(diff%60000/1000));
+}
+tick(); setInterval(tick,1000);
+
+// ── VIDEO PAN ──
+(function(){
+  const videos=document.querySelectorAll('.h-vc video');
+  document.addEventListener('mousemove',e=>{
+    const offset=((e.clientX/window.innerWidth)-.5)*10;
+    videos.forEach(v=>v.style.transform='scale(1.12) translateX('+offset.toFixed(2)+'%)');
+  });
+})();
+
+// ── VIDEO CROSSFADE ──
+(function initVideoCrossfade(){
+  const v1=document.getElementById('hv1');
+  const v2=document.getElementById('hv2');
+  if(!v1||!v2) return;
+  const s2=v2.querySelector('source');
+  if(!s2||!s2.getAttribute('src')) return;
+  let cur=1;
+  setInterval(()=>{
+    if(cur===1){ v1.classList.add('out'); v2.classList.remove('out'); cur=2; }
+    else { v2.classList.add('out'); v1.classList.remove('out'); cur=1; }
+  },10000);
+})();
+
+// ── MOUSE PARALLAX ──
+let pmx=0,pmy=0,pcx=0,pcy=0;
+document.addEventListener('mousemove',e=>{ pmx=(e.clientX/window.innerWidth-.5); pmy=(e.clientY/window.innerHeight-.5); });
+(function parallax(){
+  if(window.innerWidth>1024){
+    pcx+=(pmx-pcx)*.07; pcy+=(pmy-pcy)*.07;
+  }
+  requestAnimationFrame(parallax);
+})();
+
+// ── VENUE PARALLAX ──
+const vnBg=document.getElementById('vnBg');
+window.addEventListener('scroll',()=>{
+  const venue=document.getElementById('venue');
+  const rect=venue.getBoundingClientRect();
+  if(rect.bottom>0&&rect.top<window.innerHeight){
+    const p=(window.innerHeight-rect.top)/(window.innerHeight+venue.offsetHeight);
+    vnBg.style.transform=`translateY(${(p-.5)*60}px) scale(1.1)`;
+  }
+},{passive:true});
+
+// ── PROGRAM TIMELINE ──
+(function initProg(){
+  const wrap=document.getElementById('progWrap');
+  const line=document.getElementById('progLine');
+  const items=Array.from(wrap.querySelectorAll('[data-prog]'));
+  if(!wrap||!line) return;
+  const dayBreak=wrap.querySelector('.prog-day-break');
+  const offsetPx=dayBreak?dayBreak.offsetTop+dayBreak.offsetHeight/2:62;
+  wrap.style.setProperty('--prog-offset',offsetPx+'px');
+  line.style.top=offsetPx+'px';
+  const track=document.querySelector('.prog-track');
+  track.style.top=offsetPx+'px';
+  track.style.height=(wrap.offsetHeight-offsetPx)+'px';
+  function clamp01(v){return Math.max(0,Math.min(1,v))}
+  function update(){
+    const wr=wrap.getBoundingClientRect();
+    const wh=window.innerHeight;
+    if(wr.bottom<0||wr.top>wh) return;
+    const trackH=wrap.offsetHeight-offsetPx;
+    const progress=clamp01((wh*.75-wr.top-offsetPx)/trackH);
+    line.style.height=(progress*trackH)+'px';
+    items.forEach(item=>{
+      const ir=item.getBoundingClientRect();
+      if(ir.top<wh*.8) item.classList.add('vis');
+    });
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+})();
+
+// ── INTERSECTION OBSERVER ──
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); } });
+},{threshold:0,rootMargin:'0px 0px -12% 0px'});
+document.querySelectorAll('.fu,.lm,.img-wrap').forEach(el=>{
+  if(!el.classList.contains('s-card')) obs.observe(el);
+});
+
+// Story-kort: trigger alle 5 med stagger når strip er synlig
+const storyObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.s-card.fu').forEach((card,i)=>{
+        card.style.setProperty('--sd',(i*0.12)+'s');
+        card.classList.add('vis');
+      });
+      storyObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.05,rootMargin:'0px 0px -8% 0px'});
+const strip=document.querySelector('.story-strip');
+if(strip) storyObs.observe(strip);
+
+// ── STORY CAROUSEL (mobile only) ──
+(function(){
+  if(window.innerWidth > 1024) return; // matches CSS @media(max-width:1024px)
+
+  const story   = document.getElementById('story');
+  const sticky  = story && story.querySelector('.story-sticky');
+  const track   = story && story.querySelector('.story-strip');
+  const dotsEl  = document.getElementById('story-dots');
+  const hintEl  = document.getElementById('story-hint');
+  if(!story || !sticky || !track || !dotsEl || !hintEl) return;
+
+  const cards = Array.from(track.querySelectorAll('.s-card'));
+  const N = cards.length;
+  let current = 0;
+  let startX = 0, dragDelta = 0, dragging = false;
+
+  // Show controls (hidden by default so desktop never sees them)
+  dotsEl.style.display = 'flex';
+  hintEl.style.display = 'flex';
+
+  // Build dots
+  cards.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', 'Kapitel ' + (i + 1));
+    b.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(b);
+  });
+
+  function update(animate){
+    track.style.transition = animate ? 'transform .38s cubic-bezier(.4,0,.2,1)' : 'none';
+    const cardW = cards[0].offsetWidth;
+    const gap = 16; // 1rem gap between cards
+    track.style.transform = 'translateX(' + (-(current * (cardW + gap)) + dragDelta) + 'px)';
+    cards.forEach((c, i) => c.classList.toggle('carousel-active', i === current));
+    Array.from(dotsEl.children).forEach((b, i) => b.classList.toggle('active', i === current));
+  }
+
+  function goTo(index){
+    current = Math.max(0, Math.min(N - 1, index));
+    dragDelta = 0;
+    hintEl.classList.add('hidden');
+    update(true);
+  }
+
+  // Touch — non-passive so we can preventDefault on horizontal swipes
+  // (body has overflow-x:hidden which would otherwise consume horizontal touches)
+  let startY = 0;
+  sticky.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    dragDelta = 0; dragging = true;
+  }, {passive:true});
+  sticky.addEventListener('touchmove', e => {
+    if(!dragging) return;
+    const dx = e.touches[0].clientX - startX;
+    const dy = e.touches[0].clientY - startY;
+    if(Math.abs(dx) > Math.abs(dy)) {
+      e.preventDefault(); // block vertical-scroll hijack by body on horizontal swipes
+    }
+    dragDelta = dx;
+    if((current === 0 && dragDelta > 0) || (current === N-1 && dragDelta < 0)) dragDelta *= .25;
+    update(false);
+  }, {passive:false});
+  sticky.addEventListener('touchend', () => {
+    if(!dragging) return; dragging = false;
+    const threshold = cards[0].offsetWidth * .25;
+    if(dragDelta < -threshold) goTo(current + 1);
+    else if(dragDelta > threshold) goTo(current - 1);
+    else { dragDelta = 0; update(true); }
+  });
+
+  // Init
+  update(false);
+})();
+
+// ── THINGS TABS ──
+document.querySelectorAll('.things-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const t=btn.dataset.tab;
+    document.querySelectorAll('.things-tab').forEach(b=>b.classList.remove('act'));
+    document.querySelectorAll('.things-panel').forEach(p=>p.classList.remove('act'));
+    btn.classList.add('act');
+    document.getElementById('tab-'+t).classList.add('act');
+  });
+});
+
+// ── TABS ──
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const t=btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('act'));
+    document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('act'));
+    btn.classList.add('act');
+    document.getElementById('tab-'+t).classList.add('act');
+  });
+});
+
+// ── GUEST STEPPER ──
+(function(){
+  const hidden=document.getElementById('r-guests');
+  const display=document.getElementById('guests-display');
+  const dec=document.getElementById('guests-dec');
+  const inc=document.getElementById('guests-inc');
+  const cont=document.getElementById('extra-guests-container');
+  if(!hidden||!display||!dec||!inc) return;
+  let val=1;
+  function updateFields(){
+    cont.innerHTML='';
+    for(let i=2;i<=val;i++){
+      const div=document.createElement('div');
+      div.className='fg';
+      div.innerHTML=`<label class="flbl" for="r-guest-${i}">Gæst ${i} navn</label><input class="fin" type="text" id="r-guest-${i}" name="gaest_${i}" placeholder="Fulde navn">`;
+      cont.appendChild(div);
+    }
+  }
+  function update(){
+    display.textContent=val;
+    hidden.value=val;
+    dec.style.opacity=val<=1?'0.3':'1';
+    inc.style.opacity=val>=6?'0.3':'1';
+    updateFields();
+  }
+  dec.addEventListener('click',()=>{ if(val>1){val--;update();} });
+  inc.addEventListener('click',()=>{ if(val<6){val++;update();} });
+  update();
+})();
+
+// ── CHECKBOXES ──
+document.querySelectorAll('.cb-lbl').forEach(l=>{
+  l.addEventListener('click',()=>{
+    l.classList.toggle('on');
+    l.querySelector('input').checked=l.classList.contains('on');
+  });
+});
+
+// ── RADIO ──
+document.querySelectorAll('.rb-lbl').forEach(l=>{
+  l.addEventListener('click',()=>{
+    const name=l.querySelector('input').name;
+    document.querySelectorAll(`.rb-lbl input[name="${name}"]`).forEach(inp=>{
+      inp.closest('.rb-lbl').classList.remove('on'); inp.checked=false;
+    });
+    l.classList.add('on'); l.querySelector('input').checked=true;
+  });
+});
+
+// ── RSVP GUEST FIELDS ──
+(function(){
+  const gEl=document.getElementById('r-guests');
+  const cont=document.getElementById('extra-guests-container');
+  function updateGuests(){
+    const n=Math.min(Math.max(parseInt(gEl.value)||1,1),6);
+    cont.innerHTML='';
+    for(let i=2;i<=n;i++){
+      const div=document.createElement('div');
+      div.className='fg';
+      div.innerHTML=`<label class="flbl" for="r-guest-${i}">Gæst ${i} navn</label><input class="fin" type="text" id="r-guest-${i}" name="gaest_${i}" placeholder="Fulde navn">`;
+      cont.appendChild(div);
+    }
+  }
+  gEl.addEventListener('input',updateGuests);
+  gEl.addEventListener('change',updateGuests);
+})();
+
+// ── RSVP ──
+document.getElementById('rsvpForm').addEventListener('submit',async function(e){
+  e.preventDefault(); let ok=true;
+  const nEl=document.getElementById('r-name'), fgN=document.getElementById('fg-name');
+  if(!nEl.value.trim()){fgN.classList.add('has-err');ok=false;}else fgN.classList.remove('has-err');
+  const eEl=document.getElementById('r-email'), fgE=document.getElementById('fg-email');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eEl.value.trim())){fgE.classList.add('has-err');ok=false;}else fgE.classList.remove('has-err');
+  const gEl=document.getElementById('r-guests'), fgG=document.getElementById('fg-guests');
+  const gv=parseInt(gEl.value);
+  if(!gEl.value||isNaN(gv)||gv<1){fgG.classList.add('has-err');ok=false;}else fgG.classList.remove('has-err');
+  const aEl=document.querySelector('input[name="deltager"]:checked'), fgA=document.getElementById('fg-att');
+  if(!aEl){fgA.classList.add('has-err');ok=false;}else fgA.classList.remove('has-err');
+  if(!ok) return;
+  const btn=this.querySelector('.btn-sub');
+  btn.textContent='Sender …'; btn.disabled=true;
+  try{
+    const resp=await fetch('https://formspree.io/f/xjykrjrp',{
+      method:'POST', body:new FormData(this), headers:{Accept:'application/json'}
+    });
+    if(resp.ok){
+      const first=nEl.value.trim().split(' ')[0];
+      this.style.display='none';
+      const ok2=document.getElementById('rsvpOk');
+      ok2.classList.add('show');
+      document.getElementById('confName').textContent=`Tak, ${first} — vi glæder os til at fejre det med dig på Samsø!`;
+    } else {
+      btn.textContent='Noget gik galt – prøv igen'; btn.disabled=false;
+    }
+  } catch(err){
+    btn.textContent='Ingen forbindelse – prøv igen'; btn.disabled=false;
+  }
+});
+['r-name','r-email','r-guests'].forEach(id=>{
+  document.getElementById(id).addEventListener('input',function(){
+    this.closest('.fg')?.classList.remove('has-err');
+  });
+});
+
+// ── PRELOADER ──
+(function(){
+  const pl = document.getElementById('preloader');
+  document.body.style.overflow = 'hidden';
+  const cleanup=()=>{ if(!pl.parentNode) return; pl.remove(); document.body.style.overflow=''; };
+  setTimeout(()=>{
+    pl.classList.add('fade');
+    pl.addEventListener('transitionend', cleanup, {once:true});
+    setTimeout(cleanup, 1200);
+  }, 2300);
+})();
+
+// ── LIVE WEATHER (Open-Meteo) ──
+(function(){
+  const DA_DAYS  = ['Søn','Man','Tir','Ons','Tor','Fre','Lør'];
+  const DA_MONTHS= ['Jan','Feb','Mar','Apr','Maj','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
+  const WMO = {
+    0:{e:'☀️',d:'Klar himmel'}, 1:{e:'🌤',d:'Mest sol'}, 2:{e:'⛅',d:'Let skyet'}, 3:{e:'☁️',d:'Overskyet'},
+    45:{e:'🌫',d:'Tåge'}, 48:{e:'🌫',d:'Rimtåge'},
+    51:{e:'🌦',d:'Let støvregn'}, 53:{e:'🌦',d:'Støvregn'}, 55:{e:'🌧',d:'Kraftig støvregn'},
+    61:{e:'🌧',d:'Let regn'}, 63:{e:'🌧',d:'Regn'}, 65:{e:'🌧',d:'Kraftig regn'},
+    71:{e:'❄️',d:'Let sne'}, 73:{e:'❄️',d:'Sne'}, 75:{e:'❄️',d:'Kraftigt snevejr'},
+    80:{e:'🌦',d:'Regnbyger'}, 81:{e:'🌧',d:'Kraftige byger'}, 82:{e:'⛈',d:'Voldsomme byger'},
+    95:{e:'⛈',d:'Tordenvejr'}, 96:{e:'⛈',d:'Hagl'}, 99:{e:'⛈',d:'Kraftigt hagl'}
+  };
+  function wmo(c){ return WMO[c]||WMO[Math.floor(c/10)*10]||{e:'🌡️',d:'Variabelt'}; }
+  // Klimanormer for Samsø sidst i juni (historiske gennemsnit)
+  const CLIMATE = [
+    {min:13,max:20,e:'🌤',d:'Mest sol'},   // 23
+    {min:13,max:20,e:'🌤',d:'Mest sol'},   // 24
+    {min:13,max:21,e:'☀️',d:'Sol'},        // 25
+    {min:14,max:21,e:'☀️',d:'Sol'},        // 26 — bryllupsdag
+    {min:13,max:20,e:'⛅',d:'Let skyet'},  // 27
+  ];
+  const DATES = ['2027-06-23','2027-06-24','2027-06-25','2027-06-26','2027-06-27'];
+
+  function renderCards(days){
+    const grid=document.querySelector('.wx-grid');
+    if(!grid) return;
+    let html='';
+    days.forEach((day,i)=>{
+      const dt  = new Date(day.date+'T12:00:00');
+      const wed = day.date==='2027-06-26';
+      const feat= wed?' feat':'';
+      const del = i>0?' d'+i:'';
+      html+=`<div class="wx-card${feat} fu${del}"><span class="wx-icon">${day.e}</span><div class="wx-day">${DA_DAYS[dt.getDay()]} ${dt.getDate()} ${DA_MONTHS[dt.getMonth()]}</div><div class="wx-temp">${day.min}–${day.max}°C</div><div class="wx-desc">${day.d}</div></div>`;
+    });
+    grid.innerHTML=html;
+    grid.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+  }
+
+  // Vis klimanormer som udgangspunkt
+  const climateDays = DATES.map((date,i)=>({date,...CLIMATE[i]}));
+  renderCards(climateDays);
+
+  // Prøv at hente rigtig prognose — virker kun ~16 dage før brylluppet
+  const today = new Date();
+  const wedding = new Date('2027-06-23');
+  const daysUntil = Math.floor((wedding - today) / 86400000);
+  if(daysUntil <= 14){
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=55.82&longitude=10.63&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FCopenhagen&start_date=2027-06-23&end_date=2027-06-27')
+      .then(r=>r.json())
+      .then(data=>{
+        const d=data.daily;
+        if(!d||!d.time) return;
+        const forecastDays = d.time.map((date,i)=>({
+          date,
+          min: Math.round(d.temperature_2m_min[i]),
+          max: Math.round(d.temperature_2m_max[i]),
+          ...wmo(d.weather_code[i])
+        }));
+        renderCards(forecastDays);
+      })
+      .catch(()=>{});
+  }
+})();
+</script>
+</body>
+</html>
