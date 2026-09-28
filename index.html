@@ -59,7 +59,7 @@ nav.scrolled .ham span{background:var(--ink)}
 .ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0}
 .ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-.mob{position:fixed;inset:0;background:var(--linen);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;opacity:0;pointer-events:none;transition:opacity .4s var(--e)}
+.mob{position:fixed;inset:0;background:var(--linen);z-index:1001;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;opacity:0;pointer-events:none;transition:opacity .4s var(--e)}
 .mob.open{opacity:1;pointer-events:all}
 .mob-x{position:absolute;top:1.5rem;right:1.8rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink);padding:.8rem;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
 .mob a{font-family:var(--serif);font-size:2rem;font-style:italic;color:var(--ink);text-decoration:none;transition:color .2s}
@@ -104,6 +104,10 @@ nav.scrolled .ham span{background:var(--ink)}
 .fu.vis.d6{transition-delay:.70s}
 .fu.vis.d7{transition-delay:.82s}
 .fu.vis.d8{transition-delay:.94s}
+
+/* scroll offset for fixed nav */
+section{scroll-margin-top:70px}
+#home{scroll-margin-top:0}
 
 /* ── HERO ── */
 #home{position:relative;height:100vh;min-height:640px;overflow:hidden;background:var(--ink2);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10vh 2rem 6vh}
@@ -417,6 +421,9 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
   /* Hide custom cursor */
   #cur,#cur-t{display:none!important}
   body{cursor:auto}
+
+  /* Animation 20% smaller on mobile */
+  #id-anim{width:80vw!important;height:80vw!important;max-width:462px!important}
 
   /* Fix horizontal overflow / right margin */
   body,html{overflow-x:hidden;max-width:100vw}
@@ -814,7 +821,7 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
         <div class="h-stars">★★★★</div>
         <div class="h-name">Ballen Badehotel</div>
         <p class="h-desc">Klassisk badehotel lige ned til havnen i Ballen. Afslappet stemning. Gåafstand til venue. Enkeltværelse og dobbeltværelser tilgængeligt.</p>
-        <p class="h-book-note">Henvis til "Josephine & Niels bryllup" ved booking</p>
+        <p class="h-book-note">Henvis til "Josephine & Niels bryllup" ved booking. Bookingen åbner for andre feriegæster 1. marts 2027.</p>
         <div class="h-foot"><a href="https://www.ballenbadehotel.dk/" target="_blank" rel="noopener" class="btn-sm">Book nu</a></div>
       </div>
       <div class="h-card fu d1">
@@ -822,7 +829,7 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
         <div class="h-stars">★★★</div>
         <div class="h-name">Ballen Købmandsgaard</div>
         <p class="h-desc">Charmerende gæstgiveri i historisk købmandshus på havnen i Ballen. Gåafstand til venue. Ferieboliger til 2–12 personer med eget køkken og bad.</p>
-        <p class="h-book-note">Henvis til "Josephine & Niels bryllup" ved booking</p>
+        <p class="h-book-note">Brug nedenstående link til at booke. Bookingen åbner for andre feriegæster 1. januar 2027.</p>
         <div class="h-foot"><a href="https://kobmandsgarden.dk/" target="_blank" rel="noopener" class="btn-sm">Book nu</a></div>
       </div>
       <div class="h-card fu d2">
@@ -1094,7 +1101,10 @@ document.querySelectorAll('.mob-link').forEach(a=>{
     e.preventDefault();
     const target=document.querySelector(a.getAttribute('href'));
     closeMob();
-    if(target) setTimeout(()=>target.scrollIntoView({behavior:'smooth'}),50);
+    if(target) setTimeout(()=>{
+      const offset=target.getBoundingClientRect().top+window.scrollY-70;
+      window.scrollTo({top:Math.max(0,offset),behavior:'smooth'});
+    },50);
   });
 });
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
