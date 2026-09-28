@@ -135,7 +135,7 @@ nav.scrolled .ham span{background:var(--ink)}
 /* ── IDENTITY ── */
 #identity{background:#E8E6DD}
 .id-logo-col{display:flex;align-items:center;justify-content:center;flex-shrink:0}
-#id-anim{width:576px;height:576px;max-width:min(576px,90vw)}
+#id-anim{width:749px;height:749px;max-width:100%}
 
 /* ── STORY ── */
 #story{background:var(--parch);width:100%}
@@ -578,7 +578,7 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
 
 <!-- ── IDENTITY ── -->
 <section id="identity">
-  <div style="padding:5rem 2rem;display:flex;justify-content:center;align-items:center">
+  <div style="padding:2rem 2rem;display:flex;justify-content:center;align-items:center">
     <div class="id-logo-col fu">
       <video id="id-anim" src="Niller_bryllup_animation.mp4" muted playsinline preload="auto" style="display:block;margin:0 auto"></video>
       <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" width="220" height="220" aria-label="J & N monogram" style="display:none">
@@ -611,7 +611,7 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
   <div class="story-strip">
 
     <div class="s-card fu">
-      <div class="s-img"><img src="Saadan-mødtes-vi.jpg" alt="Sådan mødtes vi" style="width:100%;height:100%;object-fit:cover;display:block;object-position:center 60%"></div>
+      <div class="s-img"><img src="Saadan-mødtes-vi.jpg" alt="Saadan-mødtes-vi" style="width:100%;height:100%;object-fit:cover;display:block;object-position:center 60%"></div>
       <h3 class="s-title">Sådan mødtes vi</h3>
       <span class="s-yr">2017</span>
       <div class="s-body">
@@ -996,11 +996,6 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
           <span class="ferr">Skriv dit navn.</span>
         </div>
         <div id="extra-guests-container"></div>
-        <div class="fg" id="fg-email">
-          <label class="flbl" for="r-email">E-mailadresse (til løbende opdateringer)</label>
-          <input class="fin" type="email" id="r-email" name="email" placeholder="din@email.dk" autocomplete="email">
-          <span class="ferr">Skriv en gyldig e-mailadresse.</span>
-        </div>
         <div class="fg">
           <label class="flbl" for="r-song">Musikønske</label>
           <input class="fin" type="text" id="r-song" name="musikonske" placeholder="Hvilken sang får dig op at danse?">
@@ -1014,7 +1009,7 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
           <span class="ferr">Fortæl os om du deltager.</span>
         </div>
         <div class="fg">
-          <label class="flbl" for="r-breakfast">Morgenmad søndag (antal personer)</label>
+          <label class="flbl" for="r-breakfast">Morgenmad søndag — antal personer <span style="color:var(--tc)">*</span></label>
           <div class="stepper">
             <button type="button" class="stepper-btn" id="bfast-dec" aria-label="Færre til morgenmad">−</button>
             <span class="stepper-val" id="bfast-display">0</span>
@@ -1401,8 +1396,6 @@ document.getElementById('rsvpForm').addEventListener('submit',async function(e){
   e.preventDefault(); let ok=true;
   const nEl=document.getElementById('r-name'), fgN=document.getElementById('fg-name');
   if(!nEl.value.trim()){fgN.classList.add('has-err');ok=false;}else fgN.classList.remove('has-err');
-  const eEl=document.getElementById('r-email'), fgE=document.getElementById('fg-email');
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eEl.value.trim())){fgE.classList.add('has-err');ok=false;}else fgE.classList.remove('has-err');
   const gEl=document.getElementById('r-guests'), fgG=document.getElementById('fg-guests');
   const gv=parseInt(gEl.value);
   if(!gEl.value||isNaN(gv)||gv<1){fgG.classList.add('has-err');ok=false;}else fgG.classList.remove('has-err');
@@ -1428,7 +1421,7 @@ document.getElementById('rsvpForm').addEventListener('submit',async function(e){
     btn.textContent='Ingen forbindelse – prøv igen'; btn.disabled=false;
   }
 });
-['r-name','r-email','r-guests'].forEach(id=>{
+['r-name','r-guests'].forEach(id=>{
   document.getElementById(id).addEventListener('input',function(){
     this.closest('.fg')?.classList.remove('has-err');
   });
