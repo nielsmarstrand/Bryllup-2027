@@ -121,7 +121,7 @@ nav.scrolled .ham span{background:var(--ink)}
 .h-n2{font-family:var(--serif);font-size:clamp(2.76rem,7.48vw,8.05rem);font-weight:400;color:var(--linen);letter-spacing:.02em;line-height:1;opacity:0;animation:slideR 1.1s .7s var(--eo) forwards}
 .h-tag{display:flex;align-items:center;justify-content:center;gap:.8rem;margin-top:2rem;opacity:0;animation:slideUp .9s 1.4s var(--eo) forwards}
 .h-tag-l{width:90px;height:1px;background:rgba(238,232,223,.14)}
-.h-tag-t{font-size:.83rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(238,232,223,.32)}
+.h-tag-t{font-size:.83rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(238,232,223,.32);white-space:nowrap}
 .cdown{display:flex;gap:2rem;justify-content:center;opacity:0;animation:slideUp .9s 1.2s var(--eo) forwards}
 .cdu{text-align:center}
 .cdn{display:block;font-family:var(--serif);font-size:4.63rem;font-weight:400;color:var(--linen);line-height:1}
@@ -277,6 +277,7 @@ nav.scrolled .ham span{background:var(--ink)}
 /* ── WEATHER ── */
 #weather{background:var(--parch)}
 .wx-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:3rem}
+.wx-card-extra{display:none}
 .wx-card{border:1px solid rgba(28,28,26,.09);padding:2.4rem 1.2rem;text-align:center;background:var(--ww);transition:transform .3s var(--e)}
 .wx-card:hover{transform:translateY(-3px)}
 .wx-card.feat{border:1.5px solid var(--sage-d);background:rgba(122,158,126,.07);position:relative}
@@ -356,6 +357,7 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
   .nav-links{display:none}
   .ham{display:flex}
   .sec-dots{display:none}
+  .nav-inv{display:none}
 
   /* ── Layout ── */
   .sp{padding:5rem 1.4rem!important}
@@ -408,6 +410,55 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
   .wx-grid{grid-template-columns:1fr 1fr}
   .rb-grp{flex-direction:column}
 }
+
+/* ── MOBILE / TABLET ── */
+@media(max-width:1024px){
+  /* Hide custom cursor */
+  #cur,#cur-t{display:none!important}
+  body{cursor:auto}
+
+  /* Fix horizontal overflow / right margin */
+  body,html{overflow-x:hidden;max-width:100vw}
+  .sp{padding:5rem 1.2rem!important}
+  .inner,.inner-n{padding:0;max-width:100%}
+  .sec-head{padding:0 .2rem}
+
+  /* Hero text 20% smaller */
+  .h-n1,.h-n2{font-size:clamp(2.2rem,6vw,6.4rem)!important}
+  .h-amp{font-size:clamp(1.65rem,4.15vw,4.6rem)!important}
+  .h-date{font-size:2.02rem!important}
+  .h-ring{font-size:1.76rem!important}
+  .cdn{font-size:2.02rem!important}
+  .h-tag-t{font-size:.66rem!important}
+
+  /* Diamond + date on one line */
+  .h-date{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  /* "80 min · færge" one line */
+  .ferry-line-tag{white-space:nowrap}
+
+  /* Burger menu: full-screen overlay, no scroll needed */
+  .mob{overflow-y:auto;padding:5rem 2rem 3rem;gap:1.2rem;justify-content:flex-start}
+  .mob a{font-size:1.6rem}
+
+  /* Carousel: show peek of next card */
+  .story-strip{padding:0 0 0 1.2rem}
+  .s-card{flex:0 0 80vw;max-width:360px}
+
+  /* 6-day weather grid on mobile (5 on desktop via .wx-grid) */
+  .wx-grid{grid-template-columns:repeat(3,1fr)!important}
+  .wx-card-extra{display:block!important}
+}
+
+@media(max-width:600px){
+  /* Ensure no horizontal scroll from wide elements */
+  section,footer,nav{max-width:100vw;overflow-x:hidden}
+  .ferry-route{padding:0 1rem}
+  .ferry-city{min-width:100px}
+  .ferry-city-name{font-size:1.2rem}
+  .dress-cards-row{flex-direction:column}
+  .hotels{grid-template-columns:1fr!important}
+}
 </style>
 </head>
 <body>
@@ -442,15 +493,15 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
 
 <div class="mob" id="mob">
   <button class="mob-x" id="mob-x">✕</button>
-  <a href="#home" onclick="closeMob()">Hjem</a>
-  <a href="#story" onclick="closeMob()">Vores Rejse</a>
-  <a href="#venue" onclick="closeMob()">Venue</a>
-  <a href="#program" onclick="closeMob()">Program</a>
-  <a href="#indkvartering" onclick="closeMob()">Indkvartering</a>
-  <a href="#things" onclick="closeMob()">Udforsk øen</a>
-  <a href="#island" onclick="closeMob()">Find vej til Samsø</a>
-  <a href="#weather" onclick="closeMob()">Vejrudsigt</a>
-  <a href="#rsvp" onclick="closeMob()">Tilmelding</a>
+  <a href="#home" class="mob-link">Hjem</a>
+  <a href="#story" class="mob-link">Vores Rejse</a>
+  <a href="#venue" class="mob-link">Venue</a>
+  <a href="#program" class="mob-link">Program</a>
+  <a href="#indkvartering" class="mob-link">Indkvartering</a>
+  <a href="#things" class="mob-link">Udforsk øen</a>
+  <a href="#island" class="mob-link">Find vej til Samsø</a>
+  <a href="#weather" class="mob-link">Vejrudsigt</a>
+  <a href="#rsvp" class="mob-link">Tilmelding</a>
 </div>
 
 <nav id="nav">
@@ -559,7 +610,7 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
   <div class="story-strip">
 
     <div class="s-card fu">
-      <div class="s-img"><img src="Saadan-mødtes-vi.jpg" alt="Saadan-mødtes-vi" style="width:100%;height:100%;object-fit:cover;display:block;object-position:center 60%"></div>
+      <div class="s-img"><img src="Sådan mødtes vi.jpg" alt="Sådan mødtes vi" style="width:100%;height:100%;object-fit:cover;display:block;object-position:center 60%"></div>
       <h3 class="s-title">Sådan mødtes vi</h3>
       <span class="s-yr">2017</span>
       <div class="s-body">
@@ -576,7 +627,7 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
       <h3 class="s-title">Vores "førstefødte"</h3>
       <span class="s-yr">2020</span>
       <div class="s-body">
-        <p>En drøm var at få en Golden Retriever. Men hvordan overbeviser man en rationel person der træffer beslutninger på baggrund af konkrete data (I ved nok hvem af os)?</p>
+        <p>En drøm var at få en Golden Retriever. Men hvordan overbeviser man en rationel person, der træffer beslutninger på baggrund af konkrete data (I ved nok hvem af os)?</p>
         <p>Man laver selvfølgelig en business case. En 10-siders PowerPoint med billeder, facts og et udvalg af kenneler. Det skulle vise sig ikke at være sidste gang den metode virkede.</p>
         <p>Vi fandt hurtigt Billy, vores førstefødte, firbenede familiemedlem. Man siger en hund ligner sin ejer. Bedøm selv.</p>
       </div>
@@ -742,7 +793,7 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
       <div class="dress-card fu d1">
         <span class="dress-card-label">Toastmasters</span>
         <div class="dress-lines">
-          <span class="dress-line">Henvendelser angående indslag og taler bedes sendes til Jeppe Marstrand og Emma Kroeis</span>
+          <span class="dress-line">Henvendelser angående indslag og taler bedes sendes til Jeppe Marstrand (<a href="tel:29226141" style="color:inherit">29 22 61 41</a>) og Emma Kroeis (<a href="tel:27822611" style="color:inherit">27 82 26 11</a>)</span>
         </div>
       </div>
     </div>
@@ -761,7 +812,7 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
         <div class="h-dist">Ballen</div>
         <div class="h-stars">★★★★</div>
         <div class="h-name">Ballen Badehotel</div>
-        <p class="h-desc">Klassisk badehotel lige ned til havnen i Ballen. Afslappet stemning. Gåafstand til venue.</p>
+        <p class="h-desc">Klassisk badehotel lige ned til havnen i Ballen. Afslappet stemning. Gåafstand til venue. Enkeltværelse og dobbeltværelser tilgængeligt.</p>
         <p class="h-book-note">Henvis til "Josephine & Niels bryllup" ved booking</p>
         <div class="h-foot"><a href="https://www.ballenbadehotel.dk/" target="_blank" rel="noopener" class="btn-sm">Book nu</a></div>
       </div>
@@ -769,17 +820,23 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
         <div class="h-dist">Ballen</div>
         <div class="h-stars">★★★</div>
         <div class="h-name">Ballen Købmandsgaard</div>
-        <p class="h-desc">Charmerende gæstgiveri i historisk købmandshus på havnen i Ballen. Gåafstand til venue.</p>
+        <p class="h-desc">Charmerende gæstgiveri i historisk købmandshus på havnen i Ballen. Gåafstand til venue. Ferieboliger til 2–12 personer med eget køkken og bad.</p>
         <p class="h-book-note">Henvis til "Josephine & Niels bryllup" ved booking</p>
         <div class="h-foot"><a href="https://kobmandsgarden.dk/" target="_blank" rel="noopener" class="btn-sm">Book nu</a></div>
       </div>
       <div class="h-card fu d2">
+        <div class="h-dist">Ballen</div>
+        <div class="h-name">Ballen Strandpark</div>
+        <p class="h-desc">Ferielejligheder med havkig 200 meter fra Ballen Havn.</p>
+        <div class="h-foot"><a href="https://www.ballenstrandpark.dk/" target="_blank" rel="noopener" class="btn-sm">Book nu</a></div>
+      </div>
+      <div class="h-card fu d4">
         <div class="h-dist">Hele øen</div>
         <div class="h-name">Samsø Sommerhusudlejning</div>
         <p class="h-desc">Lej et sommerhus og gør weekenden til en hel øferie for familien.</p>
         <div class="h-foot"><a href="https://www.samsosommerhusudlejning.dk/" target="_blank" rel="noopener" class="btn-sm">Se udvalg</a></div>
       </div>
-      <div class="h-card fu d3">
+      <div class="h-card fu d5">
         <div class="h-dist">Hele øen</div>
         <div class="h-name">Airbnb</div>
         <p class="h-desc">Fra strandhuse til gårdidyl. Find private udlejninger spredt over hele øen.</p>
@@ -901,12 +958,13 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
       <div class="sec-rule"><div class="sec-rule-l"></div><div class="sec-rule-d"></div><div class="sec-rule-l"></div></div>
     </header>
     <span class="wx-live fu"><span class="wx-live-dot"></span>Opdateres løbende</span>
-    <div class="wx-grid">
+    <div class="wx-grid" id="wx-grid">
       <div class="wx-card fu"><span class="wx-icon">🌤</span><div class="wx-day">Man 23 Jun</div><div class="wx-temp">13–20°C</div><div class="wx-desc">Mest sol</div></div>
       <div class="wx-card fu d1"><span class="wx-icon">🌤</span><div class="wx-day">Tir 24 Jun</div><div class="wx-temp">13–20°C</div><div class="wx-desc">Mest sol</div></div>
       <div class="wx-card fu d2"><span class="wx-icon">☀️</span><div class="wx-day">Ons 25 Jun</div><div class="wx-temp">13–21°C</div><div class="wx-desc">Sol</div></div>
       <div class="wx-card feat fu d3"><span class="wx-icon">☀️</span><div class="wx-day">Lør 26 Jun</div><div class="wx-temp">14–21°C</div><div class="wx-desc">Sol</div></div>
-      <div class="wx-card fu d4"><span class="wx-icon">⛅</span><div class="wx-day">Fre 27 Jun</div><div class="wx-temp">13–20°C</div><div class="wx-desc">Let skyet</div></div>
+      <div class="wx-card fu d4 wx-card-sat"><span class="wx-icon">⛅</span><div class="wx-day">Søn 27 Jun</div><div class="wx-temp">13–20°C</div><div class="wx-desc">Let skyet</div></div>
+      <div class="wx-card fu d5 wx-card-extra"><span class="wx-icon">🌤</span><div class="wx-day">Man 28 Jun</div><div class="wx-temp">13–20°C</div><div class="wx-desc">Mest sol</div></div>
     </div>
   </div>
 </section>
@@ -953,6 +1011,16 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
             <label class="rb-lbl"><input type="radio" name="deltager" value="Desværre ikke"> Desværre ikke</label>
           </div>
           <span class="ferr">Fortæl os om du deltager.</span>
+        </div>
+        <div class="fg">
+          <label class="flbl" for="r-breakfast">Morgenmad søndag (antal personer)</label>
+          <div class="stepper">
+            <button type="button" class="stepper-btn" id="bfast-dec" aria-label="Færre til morgenmad">−</button>
+            <span class="stepper-val" id="bfast-display">0</span>
+            <button type="button" class="stepper-btn" id="bfast-inc" aria-label="Flere til morgenmad">+</button>
+          </div>
+          <input type="hidden" id="r-breakfast" name="morgenmad_antal" value="0">
+          <p style="font-size:.78rem;color:var(--stone);font-weight:300;margin-top:.4rem">Morgenmad ved Købmandsgaarden i Ballen, søndag d. 27. juni kl. 10:00</p>
         </div>
         <button type="submit" class="btn-sub">Send min tilmelding</button>
         <p class="rsvp-note">Tilmeld dig inden <strong>1. marts 2027</strong></p>
@@ -1025,6 +1093,14 @@ const mob=document.getElementById('mob');
 document.getElementById('mob-x').addEventListener('click',closeMob);
 ham.addEventListener('click',()=>{ ham.classList.toggle('open'); mob.classList.toggle('open'); });
 function closeMob(){ ham.classList.remove('open'); mob.classList.remove('open'); }
+document.querySelectorAll('.mob-link').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const target=document.querySelector(a.getAttribute('href'));
+    closeMob();
+    if(target) setTimeout(()=>target.scrollIntoView({behavior:'smooth'}),50);
+  });
+});
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
 
 // ── COUNTDOWN ──
@@ -1263,6 +1339,25 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
   update();
 })();
 
+// ── BREAKFAST STEPPER ──
+(function(){
+  const hidden=document.getElementById('r-breakfast');
+  const display=document.getElementById('bfast-display');
+  const dec=document.getElementById('bfast-dec');
+  const inc=document.getElementById('bfast-inc');
+  if(!hidden||!display||!dec||!inc) return;
+  let val=0;
+  function update(){
+    display.textContent=val;
+    hidden.value=val;
+    dec.style.opacity=val<=0?'0.3':'1';
+    inc.style.opacity=val>=20?'0.3':'1';
+  }
+  dec.addEventListener('click',()=>{ if(val>0){val--;update();} });
+  inc.addEventListener('click',()=>{ if(val<20){val++;update();} });
+  update();
+})();
+
 // ── CHECKBOXES ──
 document.querySelectorAll('.cb-lbl').forEach(l=>{
   l.addEventListener('click',()=>{
@@ -1371,8 +1466,9 @@ document.getElementById('rsvpForm').addEventListener('submit',async function(e){
     {min:13,max:21,e:'☀️',d:'Sol'},        // 25
     {min:14,max:21,e:'☀️',d:'Sol'},        // 26 — bryllupsdag
     {min:13,max:20,e:'⛅',d:'Let skyet'},  // 27
+    {min:13,max:20,e:'🌤',d:'Mest sol'},   // 28
   ];
-  const DATES = ['2027-06-23','2027-06-24','2027-06-25','2027-06-26','2027-06-27'];
+  const DATES = ['2027-06-23','2027-06-24','2027-06-25','2027-06-26','2027-06-27','2027-06-28'];
 
   function renderCards(days){
     const grid=document.querySelector('.wx-grid');
@@ -1383,7 +1479,8 @@ document.getElementById('rsvpForm').addEventListener('submit',async function(e){
       const wed = day.date==='2027-06-26';
       const feat= wed?' feat':'';
       const del = i>0?' d'+i:'';
-      html+=`<div class="wx-card${feat} fu${del}"><span class="wx-icon">${day.e}</span><div class="wx-day">${DA_DAYS[dt.getDay()]} ${dt.getDate()} ${DA_MONTHS[dt.getMonth()]}</div><div class="wx-temp">${day.min}–${day.max}°C</div><div class="wx-desc">${day.d}</div></div>`;
+      const extra= i>=5?' wx-card-extra':'';
+      html+=`<div class="wx-card${feat}${extra} fu${del}"><span class="wx-icon">${day.e}</span><div class="wx-day">${DA_DAYS[dt.getDay()]} ${dt.getDate()} ${DA_MONTHS[dt.getMonth()]}</div><div class="wx-temp">${day.min}–${day.max}°C</div><div class="wx-desc">${day.d}</div></div>`;
     });
     grid.innerHTML=html;
     grid.querySelectorAll('.fu').forEach(el=>obs.observe(el));
@@ -1398,7 +1495,7 @@ document.getElementById('rsvpForm').addEventListener('submit',async function(e){
   const wedding = new Date('2027-06-23');
   const daysUntil = Math.floor((wedding - today) / 86400000);
   if(daysUntil <= 14){
-    fetch('https://api.open-meteo.com/v1/forecast?latitude=55.82&longitude=10.63&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FCopenhagen&start_date=2027-06-23&end_date=2027-06-27')
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=55.82&longitude=10.63&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FCopenhagen&start_date=2027-06-23&end_date=2027-06-28')
       .then(r=>r.json())
       .then(data=>{
         const d=data.daily;
