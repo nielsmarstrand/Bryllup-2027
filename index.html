@@ -545,7 +545,7 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
 <section id="home">
   <div class="h-videos">
     <div class="h-vc" id="hv1">
-      <video autoplay muted loop playsinline>
+      <video autoplay muted loop playsinline preload="auto">
         <source src="13711060_1920_1080_25fps.mp4" type="video/mp4">
       </video>
     </div>
@@ -1002,14 +1002,15 @@ footer{background:#57524A;padding:6rem 2rem 3rem;text-align:center;position:rela
           <input class="fin" type="text" id="r-name" name="navn" placeholder="Dit navn" autocomplete="name">
           <span class="ferr">Skriv dit navn.</span>
         </div>
+        <div id="extra-guests-container"></div>
         <div class="fg">
           <label class="flbl" for="r-song">Musikønske</label>
           <input class="fin" type="text" id="r-song" name="musikonske" placeholder="Hvilken sang får dig op at danse?">
         </div>
         <div class="fg" id="fg-att">
-          <label class="flbl">Deltager du?</label>
+          <label class="flbl">Deltager du/I?</label>
           <div class="rb-grp">
-            <label class="rb-lbl"><input type="radio" name="deltager" value="Ja, jeg kommer!"> Ja, jeg kommer!</label>
+            <label class="rb-lbl"><input type="radio" name="deltager" value="Ja, jeg/vi kommer!"> Ja, jeg/vi kommer!</label>
             <label class="rb-lbl"><input type="radio" name="deltager" value="Desværre ikke"> Desværre ikke</label>
           </div>
           <span class="ferr">Fortæl os om du deltager.</span>
